@@ -66,10 +66,28 @@ def load_data(file_path: str) -> pd.DataFrame:
 
 
 def main():
+    # 0. View Mode Selector (Streamlined vs. Academic Syllabus)
+    st.sidebar.markdown("### 🎛️ Dashboard View Mode")
+    app_mode = st.sidebar.radio(
+        "Select Experience:",
+        [
+            "⚡ Streamlined Operations Cockpit (No Explanations)",
+            "📚 Full Syllabus Academic Walkthrough (Modules 1–6)"
+        ],
+        index=0,
+        key="app_view_mode_radio"
+    )
+
+    if app_mode == "⚡ Streamlined Operations Cockpit (No Explanations)":
+        from streamlined_app import main as render_streamlined_dashboard
+        render_streamlined_dashboard()
+        return
+
     # 1. Top Header & Academic Problem Statement
     render_header(is_synthetic=True)
 
     # 2. Sidebar Controls: Navigation & Dataset Management
+    st.sidebar.markdown("---")
     st.sidebar.markdown("## 🧭 Syllabus Phase Navigation")
     
     phases = [
