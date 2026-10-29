@@ -33,7 +33,14 @@ class PCYMarketBasketMiner:
     """
     Implements the two-pass PCY algorithm for mining frequent item pairs and association rules.
     """
-    def __init__(self, min_support: int = 50, num_buckets: int = 1000):
+    def __init__(
+        self,
+        min_support: int = 50,
+        num_buckets: int = 1000,
+        bucket_count: Optional[int] = None,
+        min_support_ratio: Optional[float] = None,
+        min_confidence: float = 0.50
+    ):
         """
         Initialize PCY miner.
 
@@ -44,6 +51,8 @@ class PCYMarketBasketMiner:
         num_buckets : int
             Fixed size of the hash bucket array for Pass 1 (B).
         """
+        if bucket_count is not None:
+            num_buckets = bucket_count
         if min_support <= 0:
             raise ValueError(f"min_support must be a positive integer, got {min_support}")
         if num_buckets <= 0:
@@ -51,6 +60,8 @@ class PCYMarketBasketMiner:
 
         self.min_support: int = min_support
         self.num_buckets: int = num_buckets
+        self.min_support_ratio: Optional[float] = min_support_ratio
+        self.min_confidence: float = min_confidence
 
     def _hash_pair(self, item1: str, item2: str) -> int:
         """
@@ -249,3 +260,20 @@ class PCYMarketBasketMiner:
                 "memory_reduction_factor": round(32.0, 1)  # 32-bit int to 1-bit bitmap
             }
         }
+
+    def fit(self, baskets: List[List[str]]) -> Dict[str, Any]:
+        """Runs PCY mining and provides backward-compatible summary."""
+        if self.min_support_ratio is not None and len(baskets) > 0:
+            self.min_support = max(1, int(self.min_support_ratio * len(baskets)))
+        res = self.run(baskets, min_confidence=self.min_confidence)
+        rules = []
+        for r in res.get("association_rules", []):
+            rules.append({
+                "antecedent": r["antecedent"],
+                "consequent": r["consequent"],
+                "support": r["support_pct"] / 100.0,
+                "confidence": r["confidence_pct"] / 100.0,
+                "lift": r["lift"]
+            })
+        res["rules"] = rules
+        return res

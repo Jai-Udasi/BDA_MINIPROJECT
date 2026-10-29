@@ -102,11 +102,9 @@ def load_ml_models(df: pd.DataFrame):
         classifier.train(df)
 
     # 2. Demand Forecaster (Phase 5)
-    ts_builder = HourlyDemandTimeSeriesBuilder()
-    ts_df = ts_builder.build_hourly_grid(df)
-    features_df = ts_builder.engineer_lag_features(ts_df)
-    forecaster = ZoneDemandForecaster(features_df)
-    forecaster.train()
+    ts_df = HourlyDemandTimeSeriesBuilder.build_zone_hourly_df(df, zone="Downtown")
+    forecaster = ZoneDemandForecaster(zone="Downtown", alpha=1.0)
+    forecaster.train_and_evaluate(ts_df)
 
     # 3. Spatial Clusterer (Phase 5)
     if SYNTHETIC_COORDINATES_FILE.exists():

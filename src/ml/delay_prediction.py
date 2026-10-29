@@ -199,6 +199,10 @@ class DeliveryDelayClassifier:
             "feature_importances_top": dict(list(self.feature_importances_.items())[:8])
         }
 
+    def train(self, df: pd.DataFrame) -> Dict[str, Any]:
+        """Alias for train_and_evaluate."""
+        return self.train_and_evaluate(df)
+
     def save_model(self, file_path: Optional[Path] = None):
         """Saves the fitted pipeline to disk using joblib."""
         if self.pipeline is None:
@@ -211,6 +215,19 @@ class DeliveryDelayClassifier:
             "evaluation_results": self.evaluation_results,
             "feature_importances": self.feature_importances_
         }, target_path)
+
+    def load_pipeline(self, file_path: Optional[Path] = None) -> "DeliveryDelayClassifier":
+        """Loads a previously fitted model pipeline into this instance."""
+        target_path = file_path or DEFAULT_MODEL_PATH
+        if not target_path.exists():
+            raise FileNotFoundError(f"Model file not found at {target_path}")
+
+        payload = joblib.load(target_path)
+        self.pipeline = payload["pipeline"]
+        self.best_model_name = payload["best_model_name"]
+        self.evaluation_results = payload["evaluation_results"]
+        self.feature_importances_ = payload.get("feature_importances", {})
+        return self
 
     @classmethod
     def load_model(cls, file_path: Optional[Path] = None) -> "DeliveryDelayClassifier":
@@ -235,8 +252,15 @@ class DeliveryDelayClassifier:
             raise ValueError("Model pipeline is not fitted or loaded.")
 
         row_df = pd.DataFrame([order_dict])
+        if "preparation_time_min" not in row_df.columns and "prep_time_min" in row_df.columns:
+            row_df["preparation_time_min"] = row_df["prep_time_min"]
         if "order_hour" not in row_df.columns:
             row_df["order_hour"] = 12
+        if "item_count" not in row_df.columns:
+            row_df["item_count"] = 2
+        for col in ALL_FEATURES:
+            if col not in row_df.columns:
+                row_df[col] = 0.0 if col in NUMERICAL_FEATURES else "Unknown"
 
         # Filter and validate features
         X_infer = row_df[ALL_FEATURES].copy()
@@ -259,10 +283,16 @@ class DeliveryDelayClassifier:
 
         return {
             "predicted_is_delayed": prediction,
+            "delay_probability": prob,
             "delay_probability_pct": round(prob * 100.0, 1),
             "risk_classification": risk,
+            "risk_tier": "High" if prob >= 0.70 else "Medium" if prob >= 0.40 else "Low",
             "model_used": self.best_model_name
         }
+
+    def predict_single_order(self, order_dict: Dict[str, Any]) -> Dict[str, Any]:
+        """Alias for predict_order_delay."""
+        return self.predict_order_delay(order_dict)
 
 
 def train_and_save_delay_model(df: pd.DataFrame) -> Dict[str, Any]:

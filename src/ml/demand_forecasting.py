@@ -32,6 +32,16 @@ class HourlyDemandTimeSeriesBuilder:
     """
     Constructs an uninterrupted hourly time series per delivery zone with lag features.
     """
+    @classmethod
+    def build_hourly_grid(cls, df: pd.DataFrame, zone: str = "Downtown") -> pd.DataFrame:
+        """Alias for build_zone_hourly_df."""
+        return cls.build_zone_hourly_df(df, zone=zone)
+
+    @classmethod
+    def engineer_lag_features(cls, ts_df: pd.DataFrame) -> pd.DataFrame:
+        """Passthrough compatibility method."""
+        return ts_df
+
     @staticmethod
     def build_zone_hourly_df(df: pd.DataFrame, zone: str) -> pd.DataFrame:
         """
@@ -95,6 +105,7 @@ class ZoneDemandForecaster:
         self.alpha: float = alpha
         self.model: Optional[Ridge] = None
         self.evaluation_summary: Optional[Dict[str, Any]] = None
+        self.last_ts_df: Optional[pd.DataFrame] = None
 
     def train_and_evaluate(
         self,
@@ -106,6 +117,8 @@ class ZoneDemandForecaster:
         """
         if len(ts_df) < 30:
             raise ValueError(f"Time series too short for forecasting ({len(ts_df)} rows).")
+
+        self.last_ts_df = ts_df
 
         n_train = int(len(ts_df) * train_ratio)
         train_df = ts_df.iloc[:n_train].copy()
@@ -223,3 +236,16 @@ class ZoneDemandForecaster:
             "peak_predicted_period": peak_period,
             "hourly_24h_breakdown": forecasts
         }
+
+    def predict_horizon(self, zone: Optional[str] = None, hours_ahead: int = 24) -> pd.DataFrame:
+        """
+        Returns a DataFrame of predicted hourly demand for next `hours_ahead` hours.
+        """
+        if self.model is None or self.last_ts_df is None:
+            raise ValueError("Forecaster must be trained with time series data first.")
+        fc_res = self.forecast_upcoming_horizons(self.last_ts_df)
+        records = fc_res.get("hourly_24h_breakdown", [])[:hours_ahead]
+        df_out = pd.DataFrame(records)
+        if "predicted_order_volume" in df_out.columns:
+            df_out["predicted_demand"] = df_out["predicted_order_volume"]
+        return df_out
