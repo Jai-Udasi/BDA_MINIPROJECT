@@ -1,0 +1,706 @@
+{
+    "spark_version": "4.2.0",
+    "spark_master": "local[*]",
+    "spark_app_name": "FoodDeliveryBigData-Spark",
+    "execution_plan_sample": "== Physical Plan ==\nAdaptiveSparkPlan isFinalPlan=false\n+- HashAggregate(keys=[delivery_zone#4], functions=[count(1)])\n   +- Exchange hashpartitioning(delivery_zone#4, 4), ENSURE_REQUIREMENTS, [plan_id=287]\n      +- HashAggregate(keys=[delivery_zone#4], functions=[partial_count(1)])\n         +- FileScan csv [delivery_zone#4] Batched: false, DataFilters: [], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/E:/FoodDeliveryBigData/data/processed/cleaned_orders.csv], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<delivery_zone:string>\n\n",
+    "kpis": {
+        "engine": "Apache Spark (PySpark DataFrames)",
+        "total_records": 2500,
+        "total_unique_orders": 2500,
+        "completed_orders": 2396,
+        "cancelled_orders": 63,
+        "completion_rate_pct": 95.84,
+        "cancellation_rate_pct": 2.52,
+        "total_revenue": 1191094.39,
+        "avg_order_value": 488.75,
+        "avg_prep_time_min": 25.2,
+        "avg_delivery_duration_min": 47.5,
+        "median_delivery_duration_min": 45.6,
+        "delayed_orders_count": 1230,
+        "eligible_delay_orders_count": 2396,
+        "delay_rate_pct": 51.34,
+        "unique_restaurants": 30,
+        "unique_zones": 6
+    },
+    "zone_aggregations": [
+        {
+            "delivery_zone": "Downtown",
+            "total_orders": 681,
+            "completed_orders": 655,
+            "total_gmv": 330514.01,
+            "avg_order_amount": 485.34,
+            "avg_distance_km": 4.51,
+            "avg_duration_min": 47.7,
+            "delay_rate_pct": 52.13
+        },
+        {
+            "delivery_zone": "East Tech Park",
+            "total_orders": 477,
+            "completed_orders": 457,
+            "total_gmv": 233553.31,
+            "avg_order_amount": 489.63,
+            "avg_distance_km": 4.44,
+            "avg_duration_min": 47.1,
+            "delay_rate_pct": 49.9
+        },
+        {
+            "delivery_zone": "North Suburbs",
+            "total_orders": 453,
+            "completed_orders": 429,
+            "total_gmv": 212577.04,
+            "avg_order_amount": 469.26,
+            "avg_distance_km": 4.72,
+            "avg_duration_min": 47.6,
+            "delay_rate_pct": 48.57
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "total_orders": 449,
+            "completed_orders": 434,
+            "total_gmv": 223964.01,
+            "avg_order_amount": 498.81,
+            "avg_distance_km": 4.26,
+            "avg_duration_min": 47.2,
+            "delay_rate_pct": 53.9
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "total_orders": 314,
+            "completed_orders": 300,
+            "total_gmv": 157741.64,
+            "avg_order_amount": 502.36,
+            "avg_distance_km": 4.47,
+            "avg_duration_min": 47.4,
+            "delay_rate_pct": 50.0
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "total_orders": 126,
+            "completed_orders": 121,
+            "total_gmv": 59869.2,
+            "avg_order_amount": 475.15,
+            "avg_distance_km": 4.42,
+            "avg_duration_min": 49.0,
+            "delay_rate_pct": 57.14
+        }
+    ],
+    "hourly_aggregations": [
+        {
+            "order_hour": 0,
+            "order_count": 65,
+            "avg_duration_min": 48.0,
+            "delay_rate_pct": 44.62
+        },
+        {
+            "order_hour": 1,
+            "order_count": 115,
+            "avg_duration_min": 47.5,
+            "delay_rate_pct": 50.43
+        },
+        {
+            "order_hour": 2,
+            "order_count": 166,
+            "avg_duration_min": 48.7,
+            "delay_rate_pct": 53.01
+        },
+        {
+            "order_hour": 3,
+            "order_count": 221,
+            "avg_duration_min": 47.6,
+            "delay_rate_pct": 50.68
+        },
+        {
+            "order_hour": 4,
+            "order_count": 274,
+            "avg_duration_min": 48.8,
+            "delay_rate_pct": 56.57
+        },
+        {
+            "order_hour": 5,
+            "order_count": 176,
+            "avg_duration_min": 47.0,
+            "delay_rate_pct": 44.32
+        },
+        {
+            "order_hour": 6,
+            "order_count": 75,
+            "avg_duration_min": 49.5,
+            "delay_rate_pct": 64.0
+        },
+        {
+            "order_hour": 7,
+            "order_count": 34,
+            "avg_duration_min": 46.7,
+            "delay_rate_pct": 55.88
+        },
+        {
+            "order_hour": 8,
+            "order_count": 26,
+            "avg_duration_min": 48.9,
+            "delay_rate_pct": 53.85
+        },
+        {
+            "order_hour": 9,
+            "order_count": 25,
+            "avg_duration_min": 42.7,
+            "delay_rate_pct": 40.0
+        },
+        {
+            "order_hour": 10,
+            "order_count": 10,
+            "avg_duration_min": 51.6,
+            "delay_rate_pct": 60.0
+        },
+        {
+            "order_hour": 11,
+            "order_count": 8,
+            "avg_duration_min": 48.8,
+            "delay_rate_pct": 62.5
+        },
+        {
+            "order_hour": 12,
+            "order_count": 11,
+            "avg_duration_min": 46.2,
+            "delay_rate_pct": 54.55
+        },
+        {
+            "order_hour": 13,
+            "order_count": 25,
+            "avg_duration_min": 46.5,
+            "delay_rate_pct": 44.0
+        },
+        {
+            "order_hour": 14,
+            "order_count": 41,
+            "avg_duration_min": 51.7,
+            "delay_rate_pct": 43.9
+        },
+        {
+            "order_hour": 15,
+            "order_count": 70,
+            "avg_duration_min": 46.7,
+            "delay_rate_pct": 51.43
+        },
+        {
+            "order_hour": 16,
+            "order_count": 87,
+            "avg_duration_min": 47.1,
+            "delay_rate_pct": 41.38
+        },
+        {
+            "order_hour": 17,
+            "order_count": 94,
+            "avg_duration_min": 45.5,
+            "delay_rate_pct": 48.94
+        },
+        {
+            "order_hour": 18,
+            "order_count": 95,
+            "avg_duration_min": 44.7,
+            "delay_rate_pct": 45.26
+        },
+        {
+            "order_hour": 19,
+            "order_count": 163,
+            "avg_duration_min": 46.9,
+            "delay_rate_pct": 50.92
+        },
+        {
+            "order_hour": 20,
+            "order_count": 275,
+            "avg_duration_min": 47.2,
+            "delay_rate_pct": 51.64
+        },
+        {
+            "order_hour": 21,
+            "order_count": 226,
+            "avg_duration_min": 48.3,
+            "delay_rate_pct": 58.85
+        },
+        {
+            "order_hour": 22,
+            "order_count": 117,
+            "avg_duration_min": 47.1,
+            "delay_rate_pct": 48.72
+        },
+        {
+            "order_hour": 23,
+            "order_count": 101,
+            "avg_duration_min": 45.8,
+            "delay_rate_pct": 50.5
+        }
+    ],
+    "ranked_restaurants_window": [
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-102",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 7,
+            "revenue": 2377.59,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-122",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 7,
+            "revenue": 2216.29,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-125",
+            "restaurant_type": "Cafe",
+            "order_count": 7,
+            "revenue": 2204.7,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-117",
+            "restaurant_type": "Cafe",
+            "order_count": 7,
+            "revenue": 3410.6,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-124",
+            "restaurant_type": "Fast Food",
+            "order_count": 7,
+            "revenue": 3044.61,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-110",
+            "restaurant_type": "Fine Dining",
+            "order_count": 6,
+            "revenue": 7572.84,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-100",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 6,
+            "revenue": 2317.96,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-103",
+            "restaurant_type": "Casual Dining",
+            "order_count": 6,
+            "revenue": 3170.75,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-107",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 6,
+            "revenue": 2705.11,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-112",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 6,
+            "revenue": 3379.12,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-115",
+            "restaurant_type": "Casual Dining",
+            "order_count": 5,
+            "revenue": 2705.1,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "Central Waterfront",
+            "restaurant_id": "REST-121",
+            "restaurant_type": "Fast Food",
+            "order_count": 5,
+            "revenue": 1883.52,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "Downtown",
+            "restaurant_id": "REST-100",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 33,
+            "revenue": 15867.12,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "Downtown",
+            "restaurant_id": "REST-128",
+            "restaurant_type": "Fast Food",
+            "order_count": 32,
+            "revenue": 11703.25,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "Downtown",
+            "restaurant_id": "REST-118",
+            "restaurant_type": "Cloud Kitchen",
+            "order_count": 31,
+            "revenue": 15562.53,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "East Tech Park",
+            "restaurant_id": "REST-128",
+            "restaurant_type": "Fast Food",
+            "order_count": 26,
+            "revenue": 9348.74,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "East Tech Park",
+            "restaurant_id": "REST-117",
+            "restaurant_type": "Cafe",
+            "order_count": 24,
+            "revenue": 10521.84,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "East Tech Park",
+            "restaurant_id": "REST-115",
+            "restaurant_type": "Casual Dining",
+            "order_count": 24,
+            "revenue": 16253.82,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "East Tech Park",
+            "restaurant_id": "REST-112",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 22,
+            "revenue": 9084.24,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "North Suburbs",
+            "restaurant_id": "REST-103",
+            "restaurant_type": "Casual Dining",
+            "order_count": 22,
+            "revenue": 11577.59,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "North Suburbs",
+            "restaurant_id": "REST-128",
+            "restaurant_type": "Fast Food",
+            "order_count": 21,
+            "revenue": 7341.62,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "North Suburbs",
+            "restaurant_id": "REST-100",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 21,
+            "revenue": 9697.77,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "North Suburbs",
+            "restaurant_id": "REST-115",
+            "restaurant_type": "Casual Dining",
+            "order_count": 21,
+            "revenue": 12271.88,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "North Suburbs",
+            "restaurant_id": "REST-121",
+            "restaurant_type": "Fast Food",
+            "order_count": 20,
+            "revenue": 6803.18,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "restaurant_id": "REST-111",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 22,
+            "revenue": 9697.24,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "restaurant_id": "REST-108",
+            "restaurant_type": "Cafe",
+            "order_count": 21,
+            "revenue": 10352.33,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "restaurant_id": "REST-100",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 21,
+            "revenue": 7604.63,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "restaurant_id": "REST-124",
+            "restaurant_type": "Fast Food",
+            "order_count": 19,
+            "revenue": 7941.71,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "restaurant_id": "REST-115",
+            "restaurant_type": "Casual Dining",
+            "order_count": 19,
+            "revenue": 11035.28,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "South Suburbs",
+            "restaurant_id": "REST-110",
+            "restaurant_type": "Fine Dining",
+            "order_count": 19,
+            "revenue": 25940.59,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-128",
+            "restaurant_type": "Fast Food",
+            "order_count": 17,
+            "revenue": 6097.83,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-126",
+            "restaurant_type": "Fast Food",
+            "order_count": 17,
+            "revenue": 5771.73,
+            "rank_in_zone": 1
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-109",
+            "restaurant_type": "Cloud Kitchen",
+            "order_count": 15,
+            "revenue": 7531.22,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-129",
+            "restaurant_type": "Casual Dining",
+            "order_count": 15,
+            "revenue": 8231.58,
+            "rank_in_zone": 2
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-115",
+            "restaurant_type": "Casual Dining",
+            "order_count": 14,
+            "revenue": 10642.17,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-112",
+            "restaurant_type": "Bakery & Desserts",
+            "order_count": 14,
+            "revenue": 5508.63,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-116",
+            "restaurant_type": "Fast Food",
+            "order_count": 14,
+            "revenue": 6110.67,
+            "rank_in_zone": 3
+        },
+        {
+            "delivery_zone": "West University Campus",
+            "restaurant_id": "REST-125",
+            "restaurant_type": "Cafe",
+            "order_count": 14,
+            "revenue": 6731.53,
+            "rank_in_zone": 3
+        }
+    ],
+    "spark_sql_analytics": {
+        "weather_traffic_cross_tab": [
+            {
+                "weather_condition": "Heavy Rain",
+                "traffic_density": "Jam",
+                "order_count": 12,
+                "avg_duration": 75.4,
+                "delay_rate_pct": 100.0
+            },
+            {
+                "weather_condition": "Windy",
+                "traffic_density": "Jam",
+                "order_count": 21,
+                "avg_duration": 63.3,
+                "delay_rate_pct": 95.24
+            },
+            {
+                "weather_condition": "Rainy",
+                "traffic_density": "Jam",
+                "order_count": 36,
+                "avg_duration": 61.0,
+                "delay_rate_pct": 91.67
+            },
+            {
+                "weather_condition": "Heavy Rain",
+                "traffic_density": "High",
+                "order_count": 30,
+                "avg_duration": 55.1,
+                "delay_rate_pct": 90.0
+            },
+            {
+                "weather_condition": "Foggy",
+                "traffic_density": "Jam",
+                "order_count": 18,
+                "avg_duration": 58.7,
+                "delay_rate_pct": 88.89
+            },
+            {
+                "weather_condition": "Clear",
+                "traffic_density": "Jam",
+                "order_count": 143,
+                "avg_duration": 58.0,
+                "delay_rate_pct": 86.71
+            },
+            {
+                "weather_condition": "Rainy",
+                "traffic_density": "High",
+                "order_count": 108,
+                "avg_duration": 57.1,
+                "delay_rate_pct": 86.11
+            },
+            {
+                "weather_condition": "Heavy Rain",
+                "traffic_density": "Medium",
+                "order_count": 54,
+                "avg_duration": 54.3,
+                "delay_rate_pct": 83.33
+            },
+            {
+                "weather_condition": "Heavy Rain",
+                "traffic_density": "Low",
+                "order_count": 41,
+                "avg_duration": 54.8,
+                "delay_rate_pct": 78.05
+            },
+            {
+                "weather_condition": "Foggy",
+                "traffic_density": "High",
+                "order_count": 39,
+                "avg_duration": 55.8,
+                "delay_rate_pct": 74.36
+            },
+            {
+                "weather_condition": "Rainy",
+                "traffic_density": "Medium",
+                "order_count": 180,
+                "avg_duration": 50.2,
+                "delay_rate_pct": 71.67
+            },
+            {
+                "weather_condition": "Windy",
+                "traffic_density": "High",
+                "order_count": 62,
+                "avg_duration": 52.8,
+                "delay_rate_pct": 70.97
+            },
+            {
+                "weather_condition": "Foggy",
+                "traffic_density": "Medium",
+                "order_count": 78,
+                "avg_duration": 49.7,
+                "delay_rate_pct": 62.82
+            },
+            {
+                "weather_condition": "Clear",
+                "traffic_density": "High",
+                "order_count": 362,
+                "avg_duration": 48.6,
+                "delay_rate_pct": 59.67
+            },
+            {
+                "weather_condition": "Rainy",
+                "traffic_density": "Low",
+                "order_count": 103,
+                "avg_duration": 46.2,
+                "delay_rate_pct": 59.22
+            },
+            {
+                "weather_condition": "Windy",
+                "traffic_density": "Medium",
+                "order_count": 90,
+                "avg_duration": 44.3,
+                "delay_rate_pct": 37.78
+            },
+            {
+                "weather_condition": "Foggy",
+                "traffic_density": "Low",
+                "order_count": 33,
+                "avg_duration": 43.8,
+                "delay_rate_pct": 36.36
+            },
+            {
+                "weather_condition": "Clear",
+                "traffic_density": "Medium",
+                "order_count": 559,
+                "avg_duration": 42.6,
+                "delay_rate_pct": 31.31
+            },
+            {
+                "weather_condition": "Windy",
+                "traffic_density": "Low",
+                "order_count": 62,
+                "avg_duration": 40.3,
+                "delay_rate_pct": 24.19
+            },
+            {
+                "weather_condition": "Clear",
+                "traffic_density": "Low",
+                "order_count": 365,
+                "avg_duration": 40.1,
+                "delay_rate_pct": 17.53
+            }
+        ],
+        "peak_rush_comparison": [
+            {
+                "period_window": "Regular / Off-Peak",
+                "order_volume": 1759,
+                "total_revenue": 859115.39,
+                "avg_delivery_time": 47.4,
+                "delay_pct": 50.65
+            },
+            {
+                "period_window": "Dinner Rush (19-21h)",
+                "order_volume": 664,
+                "total_revenue": 324358.45,
+                "avg_delivery_time": 47.5,
+                "delay_pct": 53.92
+            },
+            {
+                "period_window": "Lunch Rush (12-14h)",
+                "order_volume": 77,
+                "total_revenue": 34745.37,
+                "avg_delivery_time": 49.2,
+                "delay_pct": 45.45
+            }
+        ]
+    }
+}

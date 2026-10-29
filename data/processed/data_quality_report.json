@@ -1,0 +1,77 @@
+{
+    "initial_record_count": 2537,
+    "duplicates_removed": 37,
+    "invalid_timestamps_removed": 0,
+    "anomalies_corrected": {
+        "order_amount": 6,
+        "item_count": 6
+    },
+    "missing_values_imputed": {
+        "restaurant_type": 50,
+        "weather_condition": 48,
+        "preparation_time_min": 50,
+        "delivery_distance_km": 49
+    },
+    "final_record_count": 2500,
+    "retention_rate_pct": 98.54,
+    "initial_inspection": {
+        "total_records": 2537,
+        "total_columns": 14,
+        "columns": [
+            "order_id",
+            "order_timestamp",
+            "restaurant_id",
+            "restaurant_type",
+            "delivery_zone",
+            "order_amount",
+            "item_count",
+            "preparation_time_min",
+            "delivery_distance_km",
+            "delivery_duration_min",
+            "order_status",
+            "weather_condition",
+            "traffic_density",
+            "is_delayed"
+        ],
+        "schema": {
+            "order_id": "str",
+            "order_timestamp": "str",
+            "restaurant_id": "str",
+            "restaurant_type": "str",
+            "delivery_zone": "str",
+            "order_amount": "float64",
+            "item_count": "int64",
+            "preparation_time_min": "float64",
+            "delivery_distance_km": "float64",
+            "delivery_duration_min": "float64",
+            "order_status": "str",
+            "weather_condition": "str",
+            "traffic_density": "str",
+            "is_delayed": "int64"
+        },
+        "total_missing_values": 200,
+        "missing_per_column": {
+            "order_id": 0,
+            "order_timestamp": 0,
+            "restaurant_id": 0,
+            "restaurant_type": 50,
+            "delivery_zone": 0,
+            "order_amount": 0,
+            "item_count": 0,
+            "preparation_time_min": 50,
+            "delivery_distance_km": 50,
+            "delivery_duration_min": 0,
+            "order_status": 0,
+            "weather_condition": 50,
+            "traffic_density": 0,
+            "is_delayed": 0
+        },
+        "exact_duplicate_rows": 30,
+        "duplicate_order_ids": 37,
+        "date_range": {
+            "start": "2026-10-01 08:07:42",
+            "end": "2026-10-11 07:31:54"
+        },
+        "memory_usage_kb": 475.02
+    }
+}

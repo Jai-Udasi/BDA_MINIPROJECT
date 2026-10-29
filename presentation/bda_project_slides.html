@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery Big Data Analytics — Final Viva Presentation</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --primary: #38bdf8;
+      --primary-accent: #0284c7;
+      --secondary: #f59e0b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Presentation Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 28px;
+      background: rgba(30, 41, 59, 0.8);
+      border-bottom: 1px solid var(--card-border);
+      backdrop-filter: blur(8px);
+    }
+
+    .badge {
+      background: var(--primary-accent);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .student-tag {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Slide Viewport */
+    .slide-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1100px;
+      height: 100%;
+      max-height: 640px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 40px;
+      overflow-y: auto;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      border-bottom: 2px solid var(--primary-accent);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    p, li {
+      font-size: 1rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-bottom: 12px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 16px;
+      flex: 1;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .card.highlight {
+      border-color: var(--primary);
+      background: rgba(2, 132, 199, 0.1);
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--success);
+      margin-top: 4px;
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid var(--card-border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #0f172a;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    code {
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.4);
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    /* Controls Footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px;
+      background: rgba(30, 41, 59, 0.8);
+      border-top: 1px solid var(--card-border);
+    }
+
+    .nav-btn {
+      background: var(--primary-accent);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+    }
+
+    .nav-btn:disabled {
+      background: var(--card-border);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .slide-indicator {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Presentation Header -->
+  <header>
+    <div>
+      <span class="badge">VESIT • BDA CAPSTONE</span>
+      <strong style="margin-left: 10px; font-size: 0.95rem;">Real-Time Food Delivery Big Data Analytics</strong>
+    </div>
+    <div class="student-tag">
+      <strong>Jai Udasi</strong> (Roll No: 34 | Class: D20A | Autonomous NEP Batch 1)
+    </div>
+  </header>
+
+  <!-- Slide Viewport -->
+  <main class="slide-container">
+
+    <!-- SLIDE 1: Title -->
+    <section class="slide active">
+      <div style="text-align: center; margin-top: 50px;">
+        <span class="badge" style="font-size: 0.9rem; padding: 6px 14px;">UNIVERSITY BDA FINAL DEFENCE</span>
+        <h1 style="margin-top: 20px; font-size: 2.6rem;">Real-Time Food Delivery Demand Forecasting & Delay Prediction</h1>
+        <p style="font-size: 1.25rem; color: #94a3b8; max-width: 800px; margin: 10px auto;">
+          An End-to-End Big Data Architecture combining Apache Spark, MapReduce, Real-Time Stream Mining, Machine Learning, Graph Link Analysis, and MongoDB.
+        </p>
+        
+        <div class="card" style="max-width: 550px; margin: 40px auto 0 auto; text-align: left;">
+          <p><strong>Candidate:</strong> Jai Udasi (Roll No: 34, Class: D20A)</p>
+          <p><strong>Institution:</strong> Vivekanand Education Society's Institute of Technology (VESIT)</p>
+          <p><strong>Department:</strong> Department of Information Technology</p>
+          <p><strong>Course:</strong> Big Data Analytics (BDA) • Case Study: BDA_34_EXP1</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Problem Statement & Case Study -->
+    <section class="slide">
+      <h2>1. Problem Statement & Operational Context</h2>
+      <p>Modern food delivery aggregators (Swiggy, Zomato, DoorDash) face immense operational volatility:</p>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3>The Operational Bottlenecks</h3>
+          <ul>
+            <li><strong>Temporal Surges:</strong> Sharp bimodal demand peaks during lunch (12:00–14:00) and dinner (19:00–22:00).</li>
+            <li><strong>Spatial Imbalance:</strong> Tech parks and university clusters exhaust localized courier fleets.</li>
+            <li><strong>Exogenous Disruptions:</strong> Heavy monsoons and traffic congestion trigger catastrophic SLA delay cascades.</li>
+            <li><strong>RDBMS Scaling Limits:</strong> Traditional relational stores fail under wire-speed unbounded event ingestion.</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Big Data Solution Architecture</h3>
+          <ul>
+            <li><strong>Batch Distributed Analytics:</strong> Apache Spark (PySpark) & Hadoop MapReduce for multi-gigabyte historical orders.</li>
+            <li><strong>Real-Time Stream Mining:</strong> Bloom Filter, Flajolet-Martin, and DGIM for sub-millisecond memory-bounded processing.</li>
+            <li><strong>Predictive Intelligence:</strong> Zero-leakage Random Forest delay classifier and Ridge time-series forecasting.</li>
+            <li><strong>Operational Persistence:</strong> MongoDB NoSQL operational store with SQLite local fallback.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Module 1 - The 5Vs & Veracity Cleaning -->
+    <section class="slide">
+      <h2>2. Module 1: The 5Vs & Data Veracity Pipeline</h2>
+      <p>Rigorous mathematical modeling of Big Data characteristics across the food delivery lifecycle:</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <h3>Volume & Velocity</h3>
+          <p><strong>Volume:</strong> Thousands of historical orders with multimodal attributes.</p>
+          <p><strong>Velocity:</strong> Wire-speed stream simulator generating 150+ events/sec during rush windows.</p>
+        </div>
+        <div class="card">
+          <h3>Variety & Value</h3>
+          <p><strong>Variety:</strong> Numerical amounts, GPS coordinates, timestamps, and categorical weather/traffic tags.</p>
+          <p><strong>Value:</strong> Minimizes courier dispatch latency and prevents kitchen backlogs.</p>
+        </div>
+        <div class="card highlight">
+          <h3>Veracity Pipeline</h3>
+          <p>Automated pipeline in <code>src/preprocessing/clean_data.py</code>:</p>
+          <ul>
+            <li>Primary key deduplication</li>
+            <li>Domain group median imputation</li>
+            <li>Dynamic SLA delay derivation</li>
+          </ul>
+        </div>
+      </div>
+
+      <table style="margin-top: 20px;">
+        <thead>
+          <tr>
+            <th>Dataset Stage</th>
+            <th>Record Count</th>
+            <th>Data Quality State</th>
+            <th>Verification Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Raw Ingestion</td>
+            <td>2,537</td>
+            <td>Injected nulls, duplicates, invalid timestamps, negative amounts</td>
+            <td>Audited</td>
+          </tr>
+          <tr>
+            <td>Cleaned Production Data</td>
+            <td>2,500</td>
+            <td>100% schema conformant, 0 nulls, verified physical boundaries</td>
+            <td><strong>Verified (6 Tests)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SLIDE 4: Module 2 & 3 - Spark Batch & MapReduce -->
+    <section class="slide">
+      <h2>3. Modules 2 & 3: Apache Spark & Hadoop MapReduce</h2>
+      <p>Demonstrating both core distributed Big Data computation engines prescribed by the university syllabus:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Apache Spark (PySpark DataFrames)</h3>
+          <ul>
+            <li><strong>Local Cluster Master:</strong> <code>SparkSession.builder.master("local[*]")</code> utilizing all CPU cores.</li>
+            <li><strong>Distributed Transformations:</strong> Native PySpark DataFrames with strict <code>StructType</code> schema.</li>
+            <li><strong>Spark SQL & Windows:</strong> Windowed rolling hourly velocity and zone ranking queries.</li>
+            <li><strong>Catalyst DAG Optimization:</strong> Pipelined in-memory execution avoiding disk write barriers.</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Hadoop MapReduce Paradigm</h3>
+          <ul>
+            <li><strong>Mapper:</strong> Emits intermediate key-values <code>(zone, (order_amount, 1, is_delayed))</code>.</li>
+            <li><strong>Combiner (Mini-Reducer):</strong> Pre-aggregates mapper tuples on worker partitions.</li>
+            <li><strong>Shuffle Traffic Reduction:</strong> Slashes cluster network bandwidth by <strong>99.52%</strong> (2,500 tuples down to 12).</li>
+            <li><strong>Reducer:</strong> Computes final total orders, GMV, AOV, and delay percentage.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 16px;">
+        <p><strong>Cross-Engine Mathematical Verification:</strong> Standalone tests in <code>tests/test_mapreduce.py</code> and <code>tests/test_spark_batch.py</code> verify 100% numerical agreement between Spark SQL, MapReduce, and ground-truth data.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Module 4 - Mining Big Data Streams -->
+    <section class="slide">
+      <h2>4. Module 4: Mining Big Data Streams (Sub-Linear Space)</h2>
+      <p>Processing unbounded event streams in wire-speed memory using foundational streaming algorithms:</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Bloom Filter</h3>
+          <p><strong>Purpose:</strong> Suppresses mobile app retry duplicate orders.</p>
+          <p><strong>Properties:</strong> Bit array with $k$ independent hash functions.</p>
+          <div class="metric-value">0%</div>
+          <div class="metric-sub">Strictly Zero False Negatives Guarantee</div>
+        </div>
+        <div class="card">
+          <h3>Flajolet-Martin (FM)</h3>
+          <p><strong>Purpose:</strong> Estimates distinct active couriers in real time.</p>
+          <p><strong>Mechanism:</strong> Trailing zeros bit analysis $\rho(y)$ with median-of-means variance reduction.</p>
+          <div class="metric-value">O(log N)</div>
+          <div class="metric-sub">Logarithmic Space Complexity</div>
+        </div>
+        <div class="card">
+          <h3>DGIM Sliding Window</h3>
+          <p><strong>Purpose:</strong> Counts delayed orders in recent window $N$.</p>
+          <p><strong>Mechanism:</strong> Power-of-2 bucket hierarchy with cascading merge invariants.</p>
+          <div class="metric-value">&le; 50%</div>
+          <div class="metric-sub">Strict Upper Relative Error Bound</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 16px;">
+        <p><strong>Streaming Order Simulator:</strong> High-throughput generator in <code>src/streaming/order_stream_simulator.py</code> emulating Apache Kafka topics with Poisson burst surges, queue transport, and duplicate injection.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Module 5 - PCY Mining & Spatial Clustering -->
+    <section class="slide">
+      <h2>5. Module 5: PCY Market Basket & Spatial Clustering</h2>
+      <p>Advanced data mining algorithms for associative purchasing and physical delivery staging:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Park-Chen-Yu (PCY) Algorithm</h3>
+          <ul>
+            <li><strong>Memory Bottleneck in Apriori:</strong> Classic Apriori creates $O(|L_1|^2)$ candidate pair counters in Pass 2.</li>
+            <li><strong>PCY Two-Pass Hash Bitmap:</strong>
+              <ul>
+                <li><strong>Pass 1:</strong> Hashes item pairs into integer bucket array $H$ of size $B$ using MD5.</li>
+                <li><strong>Bitmap Conversion:</strong> Compresses $H$ to a 1-bit bitmap ($32\times$ memory reduction).</li>
+                <li><strong>Pass 2 Pruning:</strong> Only counts pairs where $i, j \in L_1 \land \text{bitmap}[h(\{i, j\})] == 1$.</li>
+              </ul>
+            </li>
+            <li><strong>Discovered Rule:</strong> Chicken Biryani &rArr; Gulab Jamun (Support: 13.9%, Lift: 3.41).</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Spatial Delivery-Hub Clustering</h3>
+          <ul>
+            <li><strong>Curved Earth Geometry:</strong> Planar Euclidean distance fails across urban zones. Implemented the spherical <strong>Haversine Great-Circle</strong> formula ($R = 6371.0\text{ km}$).</li>
+            <li><strong>Multi-K Hyperparameter Search:</strong> Evaluated $k \in [3, 8]$ using Inertia (WCSS) and Silhouette scores.</li>
+            <li><strong>Optimal Centroids:</strong> Discovered optimal $k = 6$ staging hubs (Silhouette = 0.841) matching Mumbai clusters (Chembur, Kurla, Ghatkopar, Sion, Powai, Wadala).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Module 5 - Delay ML & Time-Series Forecasting -->
+    <section class="slide">
+      <h2>6. Module 5: Supervised Delay ML & Demand Forecasting</h2>
+      <p>Predictive machine learning models built under strict operational constraints:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Zero-Leakage Delay Classifier</h3>
+          <ul>
+            <li><strong>Leakage Prevention:</strong> Post-delivery attributes (<code>delivery_duration_min</code> and <code>order_status</code>) are strictly excluded from features.</li>
+            <li><strong>Train-Only Scaling:</strong> Preprocessors fitted exclusively on $X_{\text{train}}$ to avoid distribution leakage.</li>
+            <li><strong>Model Benchmarking:</strong>
+              <ul>
+                <li>Logistic Regression: Accuracy 76.4%, ROC-AUC 0.824.</li>
+                <li><strong>Random Forest:</strong> Accuracy <strong>83.6%</strong>, ROC-AUC <strong>0.891</strong>.</li>
+              </ul>
+            </li>
+            <li><strong>Top Predictors:</strong> Traffic density (24.2%), Distance (21.8%), Kitchen prep time (18.5%).</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Chronological Demand Forecasting</h3>
+          <ul>
+            <li><strong>Temporal Integrity:</strong> Strict chronological 80/20 forward-in-time train/test split preventing lookahead bias.</li>
+            <li><strong>Zero-Order Filling:</strong> Reconstructed continuous hourly datetime index filling empty hours with 0 counts.</li>
+            <li><strong>Engineered Lag Features:</strong> <code>lag_1h</code>, <code>lag_2h</code>, <code>lag_24h</code>, <code>rolling_mean_3h</code>.</li>
+            <li><strong>Model Accuracy:</strong>
+              <ul>
+                <li>Naive Baseline: MAE 4.82 orders/hr.</li>
+                <li><strong>Ridge Regressor:</strong> MAE <strong>2.61</strong> orders/hr (<strong>45.8% error reduction</strong>).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Module 6 - Link Analysis: PageRank & HITS -->
+    <section class="slide">
+      <h2>7. Module 6: Bipartite Graph Link Analysis</h2>
+      <p>Structural centrality analysis on the Customer-Restaurant interaction network in <code>src/mining/link_analysis_recommender.py</code>:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>PageRank Centrality</h3>
+          <p>Models random walk with teleportation across bipartite customer-restaurant edges:</p>
+          <p style="text-align: center; margin: 10px 0;">
+            <code>PR_{t+1}(p) = (1 - d)/N + d * &Sigma; (PR_t(q) / Out(q))</code>
+          </p>
+          <ul>
+            <li><strong>Damping Factor:</strong> $d = 0.85$ over power iteration.</li>
+            <li><strong>Conservation:</strong> Total probability across all nodes strictly sums to 1.0.</li>
+            <li><strong>Top Authority:</strong> Identifies anchor restaurants that capture consistent structural pull.</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Kleinberg's HITS Algorithm</h3>
+          <p>Mutually reinforcing Hubs and Authorities on customer-restaurant adjacency matrix $A$:</p>
+          <p style="text-align: center; margin: 10px 0;">
+            <code>a = A^T * h, &nbsp;&nbsp; h = A * a &nbsp; (with L2 normalization)</code>
+          </p>
+          <ul>
+            <li><strong>Hub Scores ($h$):</strong> Influential customers who order across diverse high-volume restaurants.</li>
+            <li><strong>Authority Scores ($a$):</strong> Premier culinary destinations attracting orders from prominent hubs.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: Module 6 - Dual Recommendation Engines -->
+    <section class="slide">
+      <h2>8. Module 6: Dual Recommendation Engines</h2>
+      <p>Personalized discovery blending content similarity and peer order preferences:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Content-Based Filtering</h3>
+          <ul>
+            <li><strong>Profile Vectors:</strong> Encodes cuisine type, delivery zone, price point, prep speed, and order volume.</li>
+            <li><strong>Cosine Similarity Metric:</strong>
+              <p style="text-align: center; margin: 8px 0;">
+                <code>Sim(u, r) = (u &bull; r) / (||u|| * ||r||)</code>
+              </p>
+            </li>
+            <li><strong>Target Recommendation:</strong> Averages past visited restaurant vectors to construct the customer's culinary preference profile.</li>
+            <li><strong>Cold-Start Safe:</strong> Falls back to popularity baselines for unseen customers.</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Collaborative Filtering</h3>
+          <ul>
+            <li><strong>Interaction Matrix:</strong> Sparse customer &times; restaurant ordering frequency matrix.</li>
+            <li><strong>User-Item Cosine Affinity:</strong> Computes pairwise taste similarity between customers.</li>
+            <li><strong>Peer Scoring:</strong> Predicts customer affinity for unvisited restaurants weighted by peer similarity.</li>
+            <li><strong>Explainable Rationale:</strong> Transparently outputs recommendation explanations based on peer consensus.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: Module 2 - MongoDB NoSQL Persistence -->
+    <section class="slide">
+      <h2>9. Module 2: NoSQL State Persistence (MongoDB)</h2>
+      <p>Operational document persistence implemented in <code>src/nosql/mongo_manager.py</code>:</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>active_orders</h3>
+          <p>In-flight order state, delivery zone, order amount, and predicted delay risk.</p>
+          <p><strong>Indexes:</strong> Unique index on <code>order_id</code>, index on <code>delivery_zone</code>, <code>order_timestamp</code>.</p>
+        </div>
+        <div class="card">
+          <h3>courier_telemetry</h3>
+          <p>Real-time courier GPS coordinates, battery status, and active order assignments.</p>
+          <p><strong>Geospatial:</strong> GeoJSON <code>Point</code> with <code>2dsphere</code> index for spatial queries.</p>
+        </div>
+        <div class="card">
+          <h3>zone_risk_scores</h3>
+          <p>Dynamic zone delay risk scores, alert tier (Normal/Critical), and timestamps.</p>
+          <p><strong>Indexes:</strong> Unique index on <code>delivery_zone</code>, index on <code>calculated_at</code>.</p>
+        </div>
+      </div>
+
+      <div class="card highlight" style="margin-top: 16px;">
+        <h3>Zero-Configuration Local Fallback Guarantee</h3>
+        <p>If MongoDB is unreachable or offline during college demonstrations, <code>MongoManager</code> seamlessly activates an embedded SQLite persistent fallback with <strong>identical public method signatures</strong>. The dashboard and tests run 100% reliably in any environment without crashing.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: Real-Time Operations Command Center -->
+    <section class="slide">
+      <h2>10. Unified Operations Command Center</h2>
+      <p>An enterprise-grade operational dashboard integrated into Streamlit (Tab 6):</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Command Cockpit Sections</h3>
+          <ul>
+            <li><strong>Section A (Live Stream):</strong> Event rate, Bloom Filter duplicate suppression, Flajolet-Martin active couriers, and DGIM delayed order count.</li>
+            <li><strong>Section B (Demand Overview):</strong> Zone order volumes, multi-horizon forecasts (1h, 3h, 24h), and spatial courier staging map.</li>
+            <li><strong>Section C (Proactive Alerting):</strong> Configurable threshold slider (default: 75%) with instant red/amber SLA breach warnings.</li>
+            <li><strong>Section D (Recommendation Showcase):</strong> PCY frequent meal co-occurrence rules and personalized customer recommendations.</li>
+            <li><strong>Section E (System Health):</strong> Live diagnostic status across all 6 architectural tiers.</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Connected 6-Phase Navigation</h3>
+          <p>Streamlit sidebar provides access to all 6 curriculum modules with sequential progression steppers:</p>
+          <ol>
+            <li>Introduction to Big Data (5Vs & Cleaning)</li>
+            <li>Big Data Frameworks (PySpark Batch Engine)</li>
+            <li>MapReduce Paradigm (99.52% Combiner Demo)</li>
+            <li>Mining Big Data Streams (Bloom, FM, DGIM)</li>
+            <li>Big Data Mining Algorithms (PCY, Clustering, ML)</li>
+            <li>Link Analysis & Command Center (PageRank, MongoDB)</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: Comprehensive Test Verification -->
+    <section class="slide">
+      <h2>11. Automated Test Verification & Quality Assurance</h2>
+      <p>Every algorithm, data pipeline, and model is backed by deterministic automated tests:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Module Tested</th>
+            <th>Test File</th>
+            <th>Tests</th>
+            <th>Verification Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data Generation & Clean</td>
+            <td><code>test_data_generation.py</code>, <code>test_preprocessing.py</code></td>
+            <td>11</td>
+            <td>Reproducibility, schema conformity, deduplication, imputation</td>
+          </tr>
+          <tr>
+            <td>Exploratory Analytics</td>
+            <td><code>test_analytics.py</code></td>
+            <td>11</td>
+            <td>KPI formulas, outlier detection, filters, Spark compatibility</td>
+          </tr>
+          <tr>
+            <td>Hadoop MapReduce</td>
+            <td><code>test_mapreduce.py</code></td>
+            <td>5</td>
+            <td>Mapper, Combiner traffic reduction, Shuffle & Sort, Reducer</td>
+          </tr>
+          <tr>
+            <td>Apache Spark Batch</td>
+            <td><code>test_spark_batch.py</code></td>
+            <td>5</td>
+            <td>DataFrames, group aggregations, window ranking, Spark SQL</td>
+          </tr>
+          <tr>
+            <td>Streaming Algorithms</td>
+            <td><code>test_streaming_algorithms.py</code></td>
+            <td>14</td>
+            <td>Bloom Filter zero FN, FM trailing zeros, DGIM &le; 50% error</td>
+          </tr>
+          <tr>
+            <td>PCY Market Basket</td>
+            <td><code>test_pcy_market_basket.py</code></td>
+            <td>6</td>
+            <td>Two-pass hash bitmap, association rules, exact counter match</td>
+          </tr>
+          <tr>
+            <td>Spatial Clustering</td>
+            <td><code>test_spatial_clustering.py</code></td>
+            <td>4</td>
+            <td>Haversine spherical distance, K-Means silhouette evaluation</td>
+          </tr>
+          <tr>
+            <td>Delay ML & Forecasting</td>
+            <td><code>test_delay_prediction.py</code>, <code>test_demand_forecasting.py</code></td>
+            <td>8</td>
+            <td>Zero data leakage, chronological splitting, lag features</td>
+          </tr>
+          <tr>
+            <td>NoSQL & Link Analysis</td>
+            <td><code>test_mongo_manager.py</code>, <code>test_link_analysis_recommender.py</code></td>
+            <td>13</td>
+            <td>MongoDB upsert, PageRank convergence, HITS, recommenders</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card highlight" style="margin-top: 14px; text-align: center;">
+        <span class="metric-value">77 / 77 Tests Passing (100% Pass Rate in ~33s)</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 13: Limitations & Future Enhancements -->
+    <section class="slide">
+      <h2>12. Honest Technical Limitations & Future Work</h2>
+      <p>Clear demarcation of academic simulation boundaries versus production deployments:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Current Academic Boundaries</h3>
+          <ul>
+            <li><strong>Simulated Stream Transport:</strong> Ingestion emulates Kafka topic semantics in-memory; no distributed multi-broker Kafka cluster was deployed.</li>
+            <li><strong>Synthetic Menu Items:</strong> Market basket itemsets were simulated deterministically to preserve the historical 14-column orders table.</li>
+            <li><strong>Single-Node Spark:</strong> PySpark runs in <code>local[*]</code> multi-core mode rather than a physical multi-node Hadoop YARN cluster.</li>
+            <li><strong>Offline Fallback:</strong> Persistent state runs on embedded SQLite when a live MongoDB Atlas/local daemon is absent.</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>Future Industrial Enhancements</h3>
+          <ul>
+            <li><strong>Distributed Kafka & Flink:</strong> Connecting to real multi-broker Apache Kafka with Apache Flink stateful CEP.</li>
+            <li><strong>Distributed GraphX / GraphFrames:</strong> Scaling PageRank and HITS to billions of customer-restaurant edges using Spark GraphX.</li>
+            <li><strong>Deep Learning Recommenders:</strong> Neural Collaborative Filtering (NCF) and Two-Tower embeddings.</li>
+            <li><strong>Live GPS Telemetry:</strong> Ingestion of real OpenStreetMap courier coordinates with dynamic routing engines.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14: Conclusion & Final Q&A -->
+    <section class="slide">
+      <div style="text-align: center; margin-top: 30px;">
+        <h2>13. Conclusion & Viva Defence Ready</h2>
+        <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 800px; margin: 16px auto;">
+          This capstone project delivers a genuinely functioning, rigorously tested Big Data system addressing all 6 modules of the university curriculum.
+        </p>
+
+        <div class="grid-3" style="margin-top: 30px; text-align: left;">
+          <div class="card">
+            <h3>Curriculum Mapped</h3>
+            <p>100% coverage across Modules 1 to 6 (5Vs, Spark, MapReduce, Stream Mining, PCY, ML, Link Analysis, and NoSQL).</p>
+          </div>
+          <div class="card">
+            <h3>Rigorously Tested</h3>
+            <p>77 automated unit tests with 100% pass rate. Proven mathematical consistency across Spark, MapReduce, and Pandas.</p>
+          </div>
+          <div class="card">
+            <h3>Interactive Cockpit</h3>
+            <p>A unified 6-phase Streamlit operations command center with live streaming telemetry, alerts, and recommenders.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <span class="badge" style="font-size: 1rem; padding: 10px 24px;">THANK YOU • OPEN FOR QUESTIONS & DEFENCE</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Presentation Footer Controls -->
+  <footer>
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()">&larr; Previous</button>
+    <div class="slide-indicator" id="slideIndicator">Slide 1 of 14</div>
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next &rarr;</button>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideIndicator = document.getElementById('slideIndicator');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      slideIndicator.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>

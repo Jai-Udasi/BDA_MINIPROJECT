@@ -1,0 +1,501 @@
+location_id,delivery_zone,latitude,longitude,location_type
+LOC-20000,East Tech Park,19.072901,72.892914,restaurant_pickup
+LOC-20001,Central Waterfront,18.976405,72.811077,customer_dropoff
+LOC-20002,South Suburbs,19.004219,72.850903,customer_dropoff
+LOC-20003,North Suburbs,19.159157,72.866978,customer_dropoff
+LOC-20004,Downtown,18.952953,72.82977,customer_dropoff
+LOC-20005,Downtown,18.918242,72.851646,restaurant_pickup
+LOC-20006,Downtown,18.937426,72.850254,customer_dropoff
+LOC-20007,West University Campus,19.052867,72.847807,customer_dropoff
+LOC-20008,North Suburbs,19.175063,72.845564,customer_dropoff
+LOC-20009,South Suburbs,19.009599,72.852474,customer_dropoff
+LOC-20010,Downtown,18.925989,72.833691,restaurant_pickup
+LOC-20011,Central Waterfront,18.966444,72.824173,customer_dropoff
+LOC-20012,West University Campus,19.080539,72.841504,customer_dropoff
+LOC-20013,Downtown,18.920391,72.850732,customer_dropoff
+LOC-20014,Downtown,18.942788,72.826418,customer_dropoff
+LOC-20015,Downtown,18.957414,72.836788,restaurant_pickup
+LOC-20016,East Tech Park,19.082952,72.87121,customer_dropoff
+LOC-20017,North Suburbs,19.199729,72.866064,customer_dropoff
+LOC-20018,East Tech Park,19.065812,72.882059,customer_dropoff
+LOC-20019,East Tech Park,19.076545,72.886824,customer_dropoff
+LOC-20020,North Suburbs,19.163421,72.853233,restaurant_pickup
+LOC-20021,Downtown,18.951501,72.814295,customer_dropoff
+LOC-20022,East Tech Park,19.054601,72.845929,customer_dropoff
+LOC-20023,East Tech Park,19.065567,72.879011,customer_dropoff
+LOC-20024,East Tech Park,19.086828,72.871289,customer_dropoff
+LOC-20025,South Suburbs,19.034543,72.828439,restaurant_pickup
+LOC-20026,Downtown,18.918359,72.834733,customer_dropoff
+LOC-20027,North Suburbs,19.179609,72.844608,customer_dropoff
+LOC-20028,North Suburbs,19.150191,72.843931,customer_dropoff
+LOC-20029,Downtown,18.923146,72.843436,customer_dropoff
+LOC-20030,North Suburbs,19.179399,72.833721,restaurant_pickup
+LOC-20031,Downtown,18.932634,72.822689,customer_dropoff
+LOC-20032,Downtown,18.938048,72.846862,customer_dropoff
+LOC-20033,Central Waterfront,18.953171,72.824049,customer_dropoff
+LOC-20034,Central Waterfront,18.958637,72.808486,customer_dropoff
+LOC-20035,South Suburbs,19.013716,72.832577,restaurant_pickup
+LOC-20036,East Tech Park,19.062156,72.856025,customer_dropoff
+LOC-20037,Downtown,18.962377,72.835823,customer_dropoff
+LOC-20038,South Suburbs,19.006603,72.847568,customer_dropoff
+LOC-20039,East Tech Park,19.067452,72.867748,customer_dropoff
+LOC-20040,Downtown,18.94617,72.84449,restaurant_pickup
+LOC-20041,North Suburbs,19.168634,72.83809,customer_dropoff
+LOC-20042,Downtown,18.935499,72.807777,customer_dropoff
+LOC-20043,West University Campus,19.053818,72.871402,customer_dropoff
+LOC-20044,Downtown,18.95854,72.832412,customer_dropoff
+LOC-20045,South Suburbs,19.021919,72.848735,restaurant_pickup
+LOC-20046,East Tech Park,19.105747,72.883835,customer_dropoff
+LOC-20047,North Suburbs,19.173465,72.833534,customer_dropoff
+LOC-20048,North Suburbs,19.155723,72.847442,customer_dropoff
+LOC-20049,Downtown,18.929724,72.818333,customer_dropoff
+LOC-20050,Central Waterfront,18.957241,72.805021,restaurant_pickup
+LOC-20051,South Suburbs,19.035246,72.85558,customer_dropoff
+LOC-20052,West University Campus,19.071904,72.872759,customer_dropoff
+LOC-20053,West University Campus,19.072928,72.844665,customer_dropoff
+LOC-20054,North Suburbs,19.193277,72.851467,customer_dropoff
+LOC-20055,West University Campus,19.059553,72.852716,restaurant_pickup
+LOC-20056,Downtown,18.928293,72.818806,customer_dropoff
+LOC-20057,Downtown,18.949914,72.858313,customer_dropoff
+LOC-20058,Downtown,18.922017,72.842156,customer_dropoff
+LOC-20059,East Tech Park,19.060992,72.864554,customer_dropoff
+LOC-20060,East Tech Park,19.061691,72.860032,restaurant_pickup
+LOC-20061,Downtown,18.939382,72.825429,customer_dropoff
+LOC-20062,West University Campus,19.075245,72.854397,customer_dropoff
+LOC-20063,East Tech Park,19.065933,72.859509,customer_dropoff
+LOC-20064,East Tech Park,19.061879,72.879465,customer_dropoff
+LOC-20065,North Suburbs,19.181011,72.833269,restaurant_pickup
+LOC-20066,Downtown,18.939992,72.844417,customer_dropoff
+LOC-20067,South Suburbs,18.994967,72.85152,customer_dropoff
+LOC-20068,Downtown,18.930849,72.842247,customer_dropoff
+LOC-20069,Central Waterfront,18.955841,72.796341,customer_dropoff
+LOC-20070,South Suburbs,18.995469,72.845577,restaurant_pickup
+LOC-20071,Downtown,18.941917,72.824548,customer_dropoff
+LOC-20072,Downtown,18.946463,72.815462,customer_dropoff
+LOC-20073,South Suburbs,19.014207,72.830468,customer_dropoff
+LOC-20074,South Suburbs,19.007178,72.845569,customer_dropoff
+LOC-20075,South Suburbs,19.004675,72.840385,restaurant_pickup
+LOC-20076,South Suburbs,19.027076,72.838077,customer_dropoff
+LOC-20077,Downtown,18.948828,72.821844,customer_dropoff
+LOC-20078,East Tech Park,19.075158,72.887699,customer_dropoff
+LOC-20079,Downtown,18.90914,72.825837,customer_dropoff
+LOC-20080,West University Campus,19.078925,72.852563,restaurant_pickup
+LOC-20081,North Suburbs,19.179454,72.837752,customer_dropoff
+LOC-20082,East Tech Park,19.069839,72.868532,customer_dropoff
+LOC-20083,Downtown,18.952813,72.838453,customer_dropoff
+LOC-20084,East Tech Park,19.072851,72.865457,customer_dropoff
+LOC-20085,East Tech Park,19.062949,72.865209,restaurant_pickup
+LOC-20086,South Suburbs,19.019733,72.839948,customer_dropoff
+LOC-20087,North Suburbs,19.178477,72.869905,customer_dropoff
+LOC-20088,West University Campus,19.082453,72.851088,customer_dropoff
+LOC-20089,East Tech Park,19.083215,72.865503,customer_dropoff
+LOC-20090,Downtown,18.914343,72.823303,restaurant_pickup
+LOC-20091,South Suburbs,18.99255,72.840782,customer_dropoff
+LOC-20092,South Suburbs,19.015221,72.865117,customer_dropoff
+LOC-20093,North Suburbs,19.178923,72.842371,customer_dropoff
+LOC-20094,South Suburbs,19.024953,72.818466,customer_dropoff
+LOC-20095,North Suburbs,19.177827,72.85425,restaurant_pickup
+LOC-20096,North Suburbs,19.157257,72.858725,customer_dropoff
+LOC-20097,East Tech Park,19.072862,72.865417,customer_dropoff
+LOC-20098,Downtown,18.946393,72.862648,customer_dropoff
+LOC-20099,Downtown,18.940982,72.838379,customer_dropoff
+LOC-20100,Downtown,18.933288,72.825202,restaurant_pickup
+LOC-20101,North Suburbs,19.184964,72.834727,customer_dropoff
+LOC-20102,East Tech Park,19.069659,72.864668,customer_dropoff
+LOC-20103,North Suburbs,19.180748,72.849004,customer_dropoff
+LOC-20104,West University Campus,19.08445,72.84888,customer_dropoff
+LOC-20105,Downtown,18.935562,72.823655,restaurant_pickup
+LOC-20106,East Tech Park,19.063468,72.874928,customer_dropoff
+LOC-20107,South Suburbs,19.024084,72.833934,customer_dropoff
+LOC-20108,Downtown,18.949235,72.851668,customer_dropoff
+LOC-20109,Downtown,18.943761,72.857922,customer_dropoff
+LOC-20110,East Tech Park,19.059515,72.855464,restaurant_pickup
+LOC-20111,Downtown,18.917455,72.853353,customer_dropoff
+LOC-20112,West University Campus,19.079852,72.854333,customer_dropoff
+LOC-20113,South Suburbs,19.01836,72.831494,customer_dropoff
+LOC-20114,North Suburbs,19.204349,72.846551,customer_dropoff
+LOC-20115,West University Campus,19.073313,72.863709,restaurant_pickup
+LOC-20116,South Suburbs,19.020772,72.847687,customer_dropoff
+LOC-20117,Downtown,18.929314,72.841058,customer_dropoff
+LOC-20118,West University Campus,19.094584,72.871145,customer_dropoff
+LOC-20119,North Suburbs,19.194118,72.838865,customer_dropoff
+LOC-20120,South Suburbs,19.003125,72.843491,restaurant_pickup
+LOC-20121,West University Campus,19.072669,72.86813,customer_dropoff
+LOC-20122,East Tech Park,19.04849,72.888755,customer_dropoff
+LOC-20123,Downtown,18.936904,72.830277,customer_dropoff
+LOC-20124,Downtown,18.926655,72.815542,customer_dropoff
+LOC-20125,East Tech Park,19.078678,72.87128,restaurant_pickup
+LOC-20126,South Suburbs,18.99952,72.829459,customer_dropoff
+LOC-20127,West University Campus,19.067971,72.875028,customer_dropoff
+LOC-20128,Downtown,18.935685,72.817362,customer_dropoff
+LOC-20129,North Suburbs,19.172051,72.841727,customer_dropoff
+LOC-20130,East Tech Park,19.036437,72.869748,restaurant_pickup
+LOC-20131,Downtown,18.936029,72.843754,customer_dropoff
+LOC-20132,Downtown,18.960987,72.848919,customer_dropoff
+LOC-20133,East Tech Park,19.065573,72.857122,customer_dropoff
+LOC-20134,Central Waterfront,18.99588,72.818711,customer_dropoff
+LOC-20135,East Tech Park,19.068967,72.87011,restaurant_pickup
+LOC-20136,North Suburbs,19.177377,72.843268,customer_dropoff
+LOC-20137,South Suburbs,19.008116,72.838438,customer_dropoff
+LOC-20138,East Tech Park,19.068407,72.863879,customer_dropoff
+LOC-20139,Central Waterfront,18.956446,72.819277,customer_dropoff
+LOC-20140,Central Waterfront,18.96194,72.836048,restaurant_pickup
+LOC-20141,Downtown,18.906988,72.848498,customer_dropoff
+LOC-20142,North Suburbs,19.189953,72.820119,customer_dropoff
+LOC-20143,East Tech Park,19.064688,72.865943,customer_dropoff
+LOC-20144,East Tech Park,19.05191,72.861066,customer_dropoff
+LOC-20145,Downtown,18.925473,72.856427,restaurant_pickup
+LOC-20146,North Suburbs,19.186228,72.860259,customer_dropoff
+LOC-20147,North Suburbs,19.18366,72.831451,customer_dropoff
+LOC-20148,Downtown,18.932506,72.841272,customer_dropoff
+LOC-20149,Downtown,18.924134,72.843956,customer_dropoff
+LOC-20150,West University Campus,19.069116,72.850502,restaurant_pickup
+LOC-20151,Downtown,18.947332,72.840731,customer_dropoff
+LOC-20152,Downtown,18.934468,72.849312,customer_dropoff
+LOC-20153,North Suburbs,19.162027,72.852391,customer_dropoff
+LOC-20154,Central Waterfront,18.972117,72.814285,customer_dropoff
+LOC-20155,Downtown,18.942714,72.820387,restaurant_pickup
+LOC-20156,South Suburbs,19.026088,72.842781,customer_dropoff
+LOC-20157,South Suburbs,19.008727,72.857588,customer_dropoff
+LOC-20158,Downtown,18.930348,72.818498,customer_dropoff
+LOC-20159,South Suburbs,18.99632,72.852272,customer_dropoff
+LOC-20160,East Tech Park,19.053435,72.891458,restaurant_pickup
+LOC-20161,North Suburbs,19.150017,72.865357,customer_dropoff
+LOC-20162,North Suburbs,19.177532,72.843839,customer_dropoff
+LOC-20163,North Suburbs,19.168461,72.84979,customer_dropoff
+LOC-20164,Downtown,18.938348,72.84864,customer_dropoff
+LOC-20165,West University Campus,19.073371,72.856804,restaurant_pickup
+LOC-20166,East Tech Park,19.064437,72.869717,customer_dropoff
+LOC-20167,Downtown,18.942494,72.814878,customer_dropoff
+LOC-20168,Downtown,18.922622,72.844319,customer_dropoff
+LOC-20169,North Suburbs,19.17705,72.842792,customer_dropoff
+LOC-20170,South Suburbs,19.015221,72.849171,restaurant_pickup
+LOC-20171,Downtown,18.932323,72.82606,customer_dropoff
+LOC-20172,North Suburbs,19.17735,72.83326,customer_dropoff
+LOC-20173,Downtown,18.943699,72.814969,customer_dropoff
+LOC-20174,North Suburbs,19.18735,72.850671,customer_dropoff
+LOC-20175,Downtown,18.941872,72.847192,restaurant_pickup
+LOC-20176,South Suburbs,19.034986,72.857172,customer_dropoff
+LOC-20177,East Tech Park,19.04671,72.855045,customer_dropoff
+LOC-20178,West University Campus,19.064502,72.855313,customer_dropoff
+LOC-20179,Downtown,18.945012,72.826691,customer_dropoff
+LOC-20180,East Tech Park,19.071041,72.861335,restaurant_pickup
+LOC-20181,Downtown,18.931462,72.81852,customer_dropoff
+LOC-20182,West University Campus,19.060921,72.83878,customer_dropoff
+LOC-20183,West University Campus,19.06029,72.867644,customer_dropoff
+LOC-20184,Downtown,18.927407,72.866989,customer_dropoff
+LOC-20185,North Suburbs,19.18092,72.847218,restaurant_pickup
+LOC-20186,South Suburbs,19.0047,72.853404,customer_dropoff
+LOC-20187,North Suburbs,19.168092,72.846464,customer_dropoff
+LOC-20188,North Suburbs,19.205721,72.843847,customer_dropoff
+LOC-20189,Downtown,18.952591,72.826962,customer_dropoff
+LOC-20190,Downtown,18.93838,72.85665,restaurant_pickup
+LOC-20191,West University Campus,19.064476,72.876749,customer_dropoff
+LOC-20192,West University Campus,19.080493,72.84825,customer_dropoff
+LOC-20193,North Suburbs,19.182589,72.856671,customer_dropoff
+LOC-20194,East Tech Park,19.076262,72.851557,customer_dropoff
+LOC-20195,East Tech Park,19.060074,72.86743,restaurant_pickup
+LOC-20196,South Suburbs,19.014107,72.852448,customer_dropoff
+LOC-20197,West University Campus,19.074132,72.838976,customer_dropoff
+LOC-20198,West University Campus,19.076562,72.862327,customer_dropoff
+LOC-20199,South Suburbs,19.021717,72.857969,customer_dropoff
+LOC-20200,North Suburbs,19.185007,72.85051,restaurant_pickup
+LOC-20201,Downtown,18.937958,72.815468,customer_dropoff
+LOC-20202,Downtown,18.943955,72.837892,customer_dropoff
+LOC-20203,West University Campus,19.075259,72.839679,customer_dropoff
+LOC-20204,North Suburbs,19.162027,72.857638,customer_dropoff
+LOC-20205,Downtown,18.938325,72.843578,restaurant_pickup
+LOC-20206,Downtown,18.93914,72.835757,customer_dropoff
+LOC-20207,South Suburbs,19.026259,72.838807,customer_dropoff
+LOC-20208,Downtown,18.939953,72.829853,customer_dropoff
+LOC-20209,Downtown,18.933586,72.83169,customer_dropoff
+LOC-20210,North Suburbs,19.177666,72.839255,restaurant_pickup
+LOC-20211,South Suburbs,19.030069,72.834265,customer_dropoff
+LOC-20212,North Suburbs,19.172758,72.839723,customer_dropoff
+LOC-20213,Downtown,18.956164,72.837759,customer_dropoff
+LOC-20214,South Suburbs,19.027382,72.827173,customer_dropoff
+LOC-20215,Downtown,18.942005,72.846076,restaurant_pickup
+LOC-20216,East Tech Park,19.069787,72.883186,customer_dropoff
+LOC-20217,South Suburbs,19.008793,72.861912,customer_dropoff
+LOC-20218,North Suburbs,19.202587,72.840646,customer_dropoff
+LOC-20219,West University Campus,19.066654,72.872441,customer_dropoff
+LOC-20220,North Suburbs,19.193955,72.838726,restaurant_pickup
+LOC-20221,North Suburbs,19.169958,72.841619,customer_dropoff
+LOC-20222,Downtown,18.922667,72.824376,customer_dropoff
+LOC-20223,East Tech Park,19.05675,72.861186,customer_dropoff
+LOC-20224,Downtown,18.938384,72.838211,customer_dropoff
+LOC-20225,Downtown,18.957406,72.82342,restaurant_pickup
+LOC-20226,Central Waterfront,18.976812,72.815432,customer_dropoff
+LOC-20227,East Tech Park,19.068206,72.878498,customer_dropoff
+LOC-20228,West University Campus,19.058527,72.859589,customer_dropoff
+LOC-20229,North Suburbs,19.176997,72.850909,customer_dropoff
+LOC-20230,South Suburbs,19.01847,72.874464,restaurant_pickup
+LOC-20231,North Suburbs,19.167347,72.838628,customer_dropoff
+LOC-20232,North Suburbs,19.167522,72.838334,customer_dropoff
+LOC-20233,North Suburbs,19.167351,72.859268,customer_dropoff
+LOC-20234,Downtown,18.955846,72.828551,customer_dropoff
+LOC-20235,South Suburbs,19.005012,72.850657,restaurant_pickup
+LOC-20236,East Tech Park,19.062173,72.877995,customer_dropoff
+LOC-20237,Downtown,18.941235,72.817211,customer_dropoff
+LOC-20238,North Suburbs,19.19357,72.866551,customer_dropoff
+LOC-20239,Downtown,18.931447,72.830748,customer_dropoff
+LOC-20240,Central Waterfront,18.96843,72.822013,restaurant_pickup
+LOC-20241,Central Waterfront,18.972903,72.842122,customer_dropoff
+LOC-20242,West University Campus,19.069877,72.84542,customer_dropoff
+LOC-20243,East Tech Park,19.052248,72.861629,customer_dropoff
+LOC-20244,Downtown,18.938402,72.856935,customer_dropoff
+LOC-20245,West University Campus,19.065789,72.857685,restaurant_pickup
+LOC-20246,East Tech Park,19.068603,72.884661,customer_dropoff
+LOC-20247,Central Waterfront,18.995323,72.81163,customer_dropoff
+LOC-20248,Central Waterfront,18.959127,72.83053,customer_dropoff
+LOC-20249,West University Campus,19.080183,72.87716,customer_dropoff
+LOC-20250,East Tech Park,19.075807,72.866088,restaurant_pickup
+LOC-20251,East Tech Park,19.075888,72.883704,customer_dropoff
+LOC-20252,West University Campus,19.081846,72.861087,customer_dropoff
+LOC-20253,East Tech Park,19.0816,72.884432,customer_dropoff
+LOC-20254,Downtown,18.955386,72.843185,customer_dropoff
+LOC-20255,North Suburbs,19.172995,72.846761,restaurant_pickup
+LOC-20256,West University Campus,19.086478,72.845197,customer_dropoff
+LOC-20257,South Suburbs,19.019424,72.84028,customer_dropoff
+LOC-20258,North Suburbs,19.175345,72.860341,customer_dropoff
+LOC-20259,Downtown,18.941093,72.835957,customer_dropoff
+LOC-20260,North Suburbs,19.158682,72.853955,restaurant_pickup
+LOC-20261,Central Waterfront,18.972746,72.843959,customer_dropoff
+LOC-20262,Downtown,18.935107,72.83803,customer_dropoff
+LOC-20263,North Suburbs,19.177993,72.863929,customer_dropoff
+LOC-20264,West University Campus,19.070856,72.858348,customer_dropoff
+LOC-20265,South Suburbs,19.022295,72.847239,restaurant_pickup
+LOC-20266,South Suburbs,19.009643,72.847329,customer_dropoff
+LOC-20267,South Suburbs,19.027884,72.832682,customer_dropoff
+LOC-20268,East Tech Park,19.070396,72.861999,customer_dropoff
+LOC-20269,East Tech Park,19.083141,72.852122,customer_dropoff
+LOC-20270,South Suburbs,19.008293,72.849527,restaurant_pickup
+LOC-20271,South Suburbs,19.033786,72.844211,customer_dropoff
+LOC-20272,West University Campus,19.065338,72.877574,customer_dropoff
+LOC-20273,West University Campus,19.054624,72.828614,customer_dropoff
+LOC-20274,North Suburbs,19.18028,72.838975,customer_dropoff
+LOC-20275,North Suburbs,19.162745,72.8535,restaurant_pickup
+LOC-20276,South Suburbs,19.017926,72.838231,customer_dropoff
+LOC-20277,North Suburbs,19.159636,72.855469,customer_dropoff
+LOC-20278,South Suburbs,19.022802,72.84381,customer_dropoff
+LOC-20279,South Suburbs,19.03716,72.832159,customer_dropoff
+LOC-20280,West University Campus,19.053694,72.846697,restaurant_pickup
+LOC-20281,East Tech Park,19.068253,72.87332,customer_dropoff
+LOC-20282,East Tech Park,19.065905,72.874625,customer_dropoff
+LOC-20283,Downtown,18.923782,72.852725,customer_dropoff
+LOC-20284,North Suburbs,19.174014,72.858408,customer_dropoff
+LOC-20285,Downtown,18.942913,72.840881,restaurant_pickup
+LOC-20286,East Tech Park,19.075637,72.875773,customer_dropoff
+LOC-20287,North Suburbs,19.182713,72.86095,customer_dropoff
+LOC-20288,East Tech Park,19.071158,72.878908,customer_dropoff
+LOC-20289,North Suburbs,19.173923,72.862281,customer_dropoff
+LOC-20290,Downtown,18.930683,72.857011,restaurant_pickup
+LOC-20291,Downtown,18.938318,72.818231,customer_dropoff
+LOC-20292,West University Campus,19.073537,72.846827,customer_dropoff
+LOC-20293,East Tech Park,19.078888,72.862569,customer_dropoff
+LOC-20294,Downtown,18.933446,72.812726,customer_dropoff
+LOC-20295,North Suburbs,19.169572,72.815913,restaurant_pickup
+LOC-20296,South Suburbs,18.995993,72.854125,customer_dropoff
+LOC-20297,Downtown,18.94823,72.840505,customer_dropoff
+LOC-20298,North Suburbs,19.163396,72.844427,customer_dropoff
+LOC-20299,Downtown,18.938757,72.8215,customer_dropoff
+LOC-20300,Downtown,18.956841,72.845928,restaurant_pickup
+LOC-20301,North Suburbs,19.172348,72.845323,customer_dropoff
+LOC-20302,North Suburbs,19.177501,72.820499,customer_dropoff
+LOC-20303,North Suburbs,19.172034,72.836816,customer_dropoff
+LOC-20304,South Suburbs,19.002981,72.841627,customer_dropoff
+LOC-20305,Central Waterfront,18.986572,72.82569,restaurant_pickup
+LOC-20306,North Suburbs,19.168146,72.851871,customer_dropoff
+LOC-20307,East Tech Park,19.085592,72.881496,customer_dropoff
+LOC-20308,South Suburbs,19.015716,72.837237,customer_dropoff
+LOC-20309,Downtown,18.947179,72.840122,customer_dropoff
+LOC-20310,East Tech Park,19.079542,72.878022,restaurant_pickup
+LOC-20311,Downtown,18.951395,72.828977,customer_dropoff
+LOC-20312,Downtown,18.954609,72.837771,customer_dropoff
+LOC-20313,Central Waterfront,18.989903,72.80973,customer_dropoff
+LOC-20314,West University Campus,19.092832,72.857375,customer_dropoff
+LOC-20315,South Suburbs,19.007183,72.839193,restaurant_pickup
+LOC-20316,East Tech Park,19.064956,72.87549,customer_dropoff
+LOC-20317,Downtown,18.945074,72.828516,customer_dropoff
+LOC-20318,Downtown,18.938508,72.861107,customer_dropoff
+LOC-20319,Downtown,18.959531,72.840636,customer_dropoff
+LOC-20320,North Suburbs,19.175456,72.84644,restaurant_pickup
+LOC-20321,South Suburbs,19.022362,72.832726,customer_dropoff
+LOC-20322,South Suburbs,19.011911,72.824977,customer_dropoff
+LOC-20323,Downtown,18.943591,72.843166,customer_dropoff
+LOC-20324,Central Waterfront,18.959202,72.836888,customer_dropoff
+LOC-20325,South Suburbs,19.000291,72.827428,restaurant_pickup
+LOC-20326,North Suburbs,19.177693,72.857565,customer_dropoff
+LOC-20327,North Suburbs,19.195207,72.839493,customer_dropoff
+LOC-20328,East Tech Park,19.081744,72.869938,customer_dropoff
+LOC-20329,Downtown,18.936728,72.846004,customer_dropoff
+LOC-20330,East Tech Park,19.076628,72.851483,restaurant_pickup
+LOC-20331,South Suburbs,19.032718,72.861561,customer_dropoff
+LOC-20332,Downtown,18.931293,72.84015,customer_dropoff
+LOC-20333,Downtown,18.944728,72.838528,customer_dropoff
+LOC-20334,Downtown,18.932196,72.827341,customer_dropoff
+LOC-20335,Downtown,18.938493,72.849473,restaurant_pickup
+LOC-20336,West University Campus,19.078523,72.850553,customer_dropoff
+LOC-20337,South Suburbs,19.02426,72.810817,customer_dropoff
+LOC-20338,East Tech Park,19.082585,72.849523,customer_dropoff
+LOC-20339,Downtown,18.934451,72.821964,customer_dropoff
+LOC-20340,North Suburbs,19.159464,72.85893,restaurant_pickup
+LOC-20341,East Tech Park,19.063188,72.874558,customer_dropoff
+LOC-20342,Downtown,18.938237,72.841124,customer_dropoff
+LOC-20343,East Tech Park,19.069722,72.855004,customer_dropoff
+LOC-20344,East Tech Park,19.080755,72.864475,customer_dropoff
+LOC-20345,North Suburbs,19.156321,72.839863,restaurant_pickup
+LOC-20346,North Suburbs,19.193009,72.855203,customer_dropoff
+LOC-20347,Downtown,18.934616,72.831209,customer_dropoff
+LOC-20348,East Tech Park,19.06494,72.895321,customer_dropoff
+LOC-20349,North Suburbs,19.179583,72.85016,customer_dropoff
+LOC-20350,North Suburbs,19.187363,72.847865,restaurant_pickup
+LOC-20351,West University Campus,19.068891,72.852644,customer_dropoff
+LOC-20352,North Suburbs,19.174141,72.844553,customer_dropoff
+LOC-20353,Downtown,18.947532,72.836023,customer_dropoff
+LOC-20354,Downtown,18.947592,72.834431,customer_dropoff
+LOC-20355,North Suburbs,19.175944,72.821022,restaurant_pickup
+LOC-20356,Downtown,18.949796,72.839558,customer_dropoff
+LOC-20357,North Suburbs,19.186976,72.810245,customer_dropoff
+LOC-20358,Central Waterfront,18.99006,72.816325,customer_dropoff
+LOC-20359,North Suburbs,19.188298,72.832521,customer_dropoff
+LOC-20360,East Tech Park,19.076153,72.857759,restaurant_pickup
+LOC-20361,North Suburbs,19.167515,72.867968,customer_dropoff
+LOC-20362,East Tech Park,19.066512,72.873009,customer_dropoff
+LOC-20363,North Suburbs,19.185441,72.850948,customer_dropoff
+LOC-20364,Central Waterfront,18.966805,72.82238,customer_dropoff
+LOC-20365,East Tech Park,19.097641,72.869709,restaurant_pickup
+LOC-20366,Central Waterfront,18.967413,72.830608,customer_dropoff
+LOC-20367,West University Campus,19.085266,72.869244,customer_dropoff
+LOC-20368,Downtown,18.946465,72.821684,customer_dropoff
+LOC-20369,Downtown,18.958401,72.821644,customer_dropoff
+LOC-20370,Downtown,18.942432,72.826349,restaurant_pickup
+LOC-20371,Downtown,18.93803,72.839345,customer_dropoff
+LOC-20372,Downtown,18.942656,72.840463,customer_dropoff
+LOC-20373,South Suburbs,19.034365,72.850442,customer_dropoff
+LOC-20374,Downtown,18.93587,72.846969,customer_dropoff
+LOC-20375,East Tech Park,19.083074,72.855669,restaurant_pickup
+LOC-20376,West University Campus,19.079169,72.863414,customer_dropoff
+LOC-20377,Downtown,18.935229,72.851908,customer_dropoff
+LOC-20378,South Suburbs,19.013199,72.846507,customer_dropoff
+LOC-20379,East Tech Park,19.066723,72.870587,customer_dropoff
+LOC-20380,Downtown,18.925645,72.818119,restaurant_pickup
+LOC-20381,South Suburbs,19.034134,72.834836,customer_dropoff
+LOC-20382,North Suburbs,19.163103,72.819159,customer_dropoff
+LOC-20383,West University Campus,19.064332,72.839123,customer_dropoff
+LOC-20384,South Suburbs,19.034704,72.857118,customer_dropoff
+LOC-20385,South Suburbs,19.006742,72.872029,restaurant_pickup
+LOC-20386,East Tech Park,19.080581,72.866502,customer_dropoff
+LOC-20387,Downtown,18.908807,72.862891,customer_dropoff
+LOC-20388,South Suburbs,18.998325,72.825255,customer_dropoff
+LOC-20389,South Suburbs,19.027271,72.874277,customer_dropoff
+LOC-20390,Central Waterfront,18.981611,72.824767,restaurant_pickup
+LOC-20391,East Tech Park,19.075937,72.880641,customer_dropoff
+LOC-20392,East Tech Park,19.077907,72.873774,customer_dropoff
+LOC-20393,South Suburbs,19.01625,72.844249,customer_dropoff
+LOC-20394,East Tech Park,19.059752,72.867032,customer_dropoff
+LOC-20395,West University Campus,19.051685,72.85382,restaurant_pickup
+LOC-20396,West University Campus,19.060137,72.841757,customer_dropoff
+LOC-20397,East Tech Park,19.070959,72.887104,customer_dropoff
+LOC-20398,South Suburbs,19.02602,72.826154,customer_dropoff
+LOC-20399,South Suburbs,19.003124,72.856289,customer_dropoff
+LOC-20400,Downtown,18.92701,72.832704,restaurant_pickup
+LOC-20401,West University Campus,19.078601,72.84338,customer_dropoff
+LOC-20402,North Suburbs,19.176265,72.828992,customer_dropoff
+LOC-20403,West University Campus,19.064784,72.858837,customer_dropoff
+LOC-20404,East Tech Park,19.049684,72.875686,customer_dropoff
+LOC-20405,West University Campus,19.071764,72.86163,restaurant_pickup
+LOC-20406,East Tech Park,19.071487,72.88677,customer_dropoff
+LOC-20407,Downtown,18.940303,72.830247,customer_dropoff
+LOC-20408,West University Campus,19.073468,72.86152,customer_dropoff
+LOC-20409,Downtown,18.939386,72.835887,customer_dropoff
+LOC-20410,East Tech Park,19.060376,72.862445,restaurant_pickup
+LOC-20411,Central Waterfront,18.948169,72.838995,customer_dropoff
+LOC-20412,Central Waterfront,18.950074,72.809685,customer_dropoff
+LOC-20413,North Suburbs,19.166379,72.855739,customer_dropoff
+LOC-20414,North Suburbs,19.171461,72.859973,customer_dropoff
+LOC-20415,East Tech Park,19.060718,72.873748,restaurant_pickup
+LOC-20416,East Tech Park,19.058776,72.896142,customer_dropoff
+LOC-20417,East Tech Park,19.054549,72.874118,customer_dropoff
+LOC-20418,South Suburbs,19.022605,72.849966,customer_dropoff
+LOC-20419,South Suburbs,19.012777,72.843442,customer_dropoff
+LOC-20420,South Suburbs,19.015526,72.843236,restaurant_pickup
+LOC-20421,South Suburbs,19.026567,72.871526,customer_dropoff
+LOC-20422,Downtown,18.93211,72.818962,customer_dropoff
+LOC-20423,North Suburbs,19.173941,72.875957,customer_dropoff
+LOC-20424,Downtown,18.929156,72.855069,customer_dropoff
+LOC-20425,North Suburbs,19.195132,72.838357,restaurant_pickup
+LOC-20426,East Tech Park,19.075628,72.889941,customer_dropoff
+LOC-20427,West University Campus,19.06745,72.852557,customer_dropoff
+LOC-20428,East Tech Park,19.06182,72.858223,customer_dropoff
+LOC-20429,Downtown,18.931009,72.820713,customer_dropoff
+LOC-20430,Downtown,18.939209,72.82616,restaurant_pickup
+LOC-20431,South Suburbs,19.017805,72.826329,customer_dropoff
+LOC-20432,North Suburbs,19.178971,72.855002,customer_dropoff
+LOC-20433,Downtown,18.914875,72.839889,customer_dropoff
+LOC-20434,Downtown,18.953532,72.820884,customer_dropoff
+LOC-20435,South Suburbs,19.035071,72.850028,restaurant_pickup
+LOC-20436,Downtown,18.93034,72.834731,customer_dropoff
+LOC-20437,West University Campus,19.0787,72.855912,customer_dropoff
+LOC-20438,South Suburbs,19.021465,72.833952,customer_dropoff
+LOC-20439,Downtown,18.940832,72.818435,customer_dropoff
+LOC-20440,Downtown,18.937465,72.824553,restaurant_pickup
+LOC-20441,Central Waterfront,18.956174,72.832833,customer_dropoff
+LOC-20442,East Tech Park,19.081896,72.87771,customer_dropoff
+LOC-20443,East Tech Park,19.055692,72.866603,customer_dropoff
+LOC-20444,South Suburbs,19.029557,72.846701,customer_dropoff
+LOC-20445,Central Waterfront,18.992832,72.82272,restaurant_pickup
+LOC-20446,Central Waterfront,18.967305,72.814291,customer_dropoff
+LOC-20447,South Suburbs,19.016602,72.84317,customer_dropoff
+LOC-20448,East Tech Park,19.077297,72.88188,customer_dropoff
+LOC-20449,Downtown,18.929368,72.819425,customer_dropoff
+LOC-20450,South Suburbs,18.992966,72.851096,restaurant_pickup
+LOC-20451,North Suburbs,19.16176,72.819165,customer_dropoff
+LOC-20452,East Tech Park,19.073463,72.900316,customer_dropoff
+LOC-20453,West University Campus,19.071927,72.865062,customer_dropoff
+LOC-20454,Downtown,18.939782,72.834213,customer_dropoff
+LOC-20455,North Suburbs,19.186029,72.841517,restaurant_pickup
+LOC-20456,Downtown,18.942009,72.83926,customer_dropoff
+LOC-20457,East Tech Park,19.060783,72.882305,customer_dropoff
+LOC-20458,Downtown,18.9367,72.826331,customer_dropoff
+LOC-20459,Downtown,18.945238,72.824618,customer_dropoff
+LOC-20460,Downtown,18.939138,72.835291,restaurant_pickup
+LOC-20461,North Suburbs,19.188031,72.850696,customer_dropoff
+LOC-20462,South Suburbs,19.0147,72.854813,customer_dropoff
+LOC-20463,North Suburbs,19.191682,72.851694,customer_dropoff
+LOC-20464,Central Waterfront,18.965124,72.802258,customer_dropoff
+LOC-20465,East Tech Park,19.056019,72.866737,restaurant_pickup
+LOC-20466,East Tech Park,19.061486,72.868156,customer_dropoff
+LOC-20467,West University Campus,19.07268,72.861356,customer_dropoff
+LOC-20468,Downtown,18.937954,72.841238,customer_dropoff
+LOC-20469,Central Waterfront,18.965774,72.794294,customer_dropoff
+LOC-20470,Downtown,18.927528,72.833671,restaurant_pickup
+LOC-20471,Central Waterfront,18.950484,72.825199,customer_dropoff
+LOC-20472,Downtown,18.957169,72.850025,customer_dropoff
+LOC-20473,West University Campus,19.069439,72.872889,customer_dropoff
+LOC-20474,North Suburbs,19.176784,72.840955,customer_dropoff
+LOC-20475,Central Waterfront,18.957639,72.81437,restaurant_pickup
+LOC-20476,Downtown,18.934142,72.837445,customer_dropoff
+LOC-20477,North Suburbs,19.176927,72.845037,customer_dropoff
+LOC-20478,Central Waterfront,18.970243,72.832288,customer_dropoff
+LOC-20479,North Suburbs,19.186395,72.827181,customer_dropoff
+LOC-20480,North Suburbs,19.144353,72.856212,restaurant_pickup
+LOC-20481,South Suburbs,18.998597,72.842303,customer_dropoff
+LOC-20482,East Tech Park,19.054759,72.848776,customer_dropoff
+LOC-20483,North Suburbs,19.181498,72.85411,customer_dropoff
+LOC-20484,North Suburbs,19.168082,72.813907,customer_dropoff
+LOC-20485,West University Campus,19.065445,72.859702,restaurant_pickup
+LOC-20486,Downtown,18.921053,72.8376,customer_dropoff
+LOC-20487,East Tech Park,19.068616,72.877351,customer_dropoff
+LOC-20488,Central Waterfront,18.966435,72.806323,customer_dropoff
+LOC-20489,West University Campus,19.086359,72.853098,customer_dropoff
+LOC-20490,East Tech Park,19.068472,72.859201,restaurant_pickup
+LOC-20491,North Suburbs,19.169681,72.834382,customer_dropoff
+LOC-20492,Downtown,18.936725,72.855941,customer_dropoff
+LOC-20493,Downtown,18.922337,72.816037,customer_dropoff
+LOC-20494,East Tech Park,19.086454,72.867888,customer_dropoff
+LOC-20495,East Tech Park,19.060771,72.882879,restaurant_pickup
+LOC-20496,North Suburbs,19.167733,72.866912,customer_dropoff
+LOC-20497,Downtown,18.946935,72.829545,customer_dropoff
+LOC-20498,Central Waterfront,18.990888,72.810731,customer_dropoff
+LOC-20499,Central Waterfront,18.973905,72.821592,customer_dropoff
