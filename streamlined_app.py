@@ -65,10 +65,6 @@ st.markdown("""
         font-weight: 700;
         margin-top: 4px;
     }
-    .metric-delta {
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
     .status-badge {
         display: inline-block;
         padding: 4px 10px;
@@ -81,6 +77,31 @@ st.markdown("""
         background-color: rgba(16, 185, 129, 0.2);
         color: #10b981;
         border: 1px solid #10b981;
+    }
+    .pipeline-card {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        border: 1px solid #334155;
+        border-left: 4px solid #38bdf8;
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-bottom: 16px;
+        font-size: 0.85rem;
+        color: #cbd5e1;
+        line-height: 1.5;
+    }
+    .pipeline-card b {
+        color: #f8fafc;
+    }
+    .flow-badge {
+        display: inline-block;
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        margin-right: 4px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -148,7 +169,7 @@ def main():
     top_col1, top_col2 = st.columns([3, 1])
     with top_col1:
         st.markdown("## ⚡ PulseDelivery — Real-Time Operations & Demand Command Center")
-        st.caption("End-to-End Operational Pipeline: Ingestion → Spark Aggregates → Stream Telemetry → Forecasting → Dispatch Alerts → NoSQL")
+        st.caption("Interconnected Big Data Pipeline: Data Intake ➔ PySpark GMV ➔ MapReduce Duration ➔ DGIM Telemetry ➔ ML Demand/Delay Models ➔ Live NoSQL Dispatch")
     with top_col2:
         st.markdown(
             '<div style="text-align: right; padding-top: 15px;">'
@@ -158,36 +179,61 @@ def main():
         )
 
     # =========================================================================
-    # ROW 1: 6-PHASE CONNECTED TELEMETRY PULSE (NO EXPLANATIONS)
+    # ROW 0: PROBLEM STATEMENT & BIG DATA SOLUTION ARCHITECTURE BANNER
     # =========================================================================
-    st.markdown("---")
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 8px; padding: 12px 18px; margin: 6px 0 14px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div style="flex: 1; min-width: 320px;">
+                <div style="color: #38bdf8; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px;">
+                    🎯 Problem Statement
+                </div>
+                <div style="color: #f8fafc; font-size: 0.95rem; font-weight: 600; margin-top: 3px; line-height: 1.4;">
+                    Food delivery platforms face severe SLA breaches and driver shortages caused by unexpected order surges, bad weather, traffic congestion, and uncoordinated courier dispatch.
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 340px; background: rgba(15, 23, 42, 0.6); padding: 10px 14px; border-radius: 6px; border: 1px solid #334155;">
+                <div style="color: #10b981; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px;">
+                    💡 Interconnected Big Data Solution
+                </div>
+                <div style="color: #cbd5e1; font-size: 0.86rem; font-weight: 500; margin-top: 3px; line-height: 1.4;">
+                    <b>Data Hygiene (P1)</b> feeds <b>PySpark & MapReduce baselines (P2, P3)</b> ➔ <b>DGIM stream (P4)</b> catches real-time delay spikes in O(log² N) memory ➔ <b>Ridge & Random Forest (P5)</b> forecast 24h demand & score delay risk ➔ <b>MongoDB (P6)</b> drives live courier dispatch & smart meal recommendations.
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # =========================================================================
+    # ROW 1: 6-PHASE CONNECTED TELEMETRY PULSE
+    # =========================================================================
     kpi1, kpi2, kpi3, kpi4, kpi5, kpi6 = st.columns(6)
 
     # 1. Phase 1: Clean Data Ingestion
-    kpi1.metric("Ingested Volume", f"{len(df):,} orders", "100% Schema Valid")
+    kpi1.metric("Ingested Volume", f"{len(df):,} orders", "Phase 1: Valid Intake")
 
     # 2. Phase 2: Spark Batch GMV Aggregate
     total_gmv = df["order_amount"].sum()
-    kpi2.metric("Total Revenue (GMV)", f"₹{total_gmv/1e6:.2f}M", "Spark Aggregated")
+    kpi2.metric("Platform GMV", f"₹{total_gmv/1e6:.2f}M", "Phase 2: Spark Aggregate")
 
     # 3. Phase 3: MapReduce Mean Duration Aggregate
     avg_duration = df["delivery_duration_min"].mean()
-    kpi3.metric("Avg Delivery Time", f"{avg_duration:.1f} mins", "MapReduce Computed")
+    kpi3.metric("Avg Delivery Time", f"{avg_duration:.1f} mins", "Phase 3: MapReduce")
 
     # 4. Phase 4: DGIM Sliding-Window Delayed Orders
     dgim_delayed = int((df["is_delayed"].tail(100).sum()))
-    kpi4.metric("In-Flight Delays", f"{dgim_delayed} orders", "DGIM Window (N=100)")
+    kpi4.metric("In-Flight Delays", f"{dgim_delayed} orders", "Phase 4: DGIM (N=100)")
 
     # 5. Phase 5: Next-Hour Demand Projection
     try:
         next_hr_forecast = int(models["forecaster"].predict_horizon(zone="Downtown", hours_ahead=1)["predicted_demand"].iloc[0])
     except Exception:
         next_hr_forecast = 32
-    kpi5.metric("Downtown 1h Demand", f"{next_hr_forecast} orders", "ML Forecast")
+    kpi5.metric("1h Demand Projection", f"{next_hr_forecast} orders", "Phase 5: Ridge Model")
 
     # 6. Phase 6: NoSQL Persistence Status
     active_docs = db_health["collection_counts"]["active_orders"]
-    kpi6.metric("Active Store Docs", f"{active_docs} docs", f"{db_health['backend']}")
+    kpi6.metric("Active Store Docs", f"{active_docs} docs", f"Phase 6: {db_health['backend']}")
 
     # =========================================================================
     # ROW 2: SIDEBAR FILTERS & CONTROLS
@@ -245,30 +291,47 @@ def main():
     # TAB 1: DEMAND FORECASTING & SPATIAL STAGING
     # -------------------------------------------------------------------------
     with op_tab1:
+        st.markdown("""
+        <div class="pipeline-card">
+            <span class="flow-badge">HOW IT WORKS & CONNECTS</span>
+            <b>Data Pipeline Linkage:</b><br/>
+            • <b>Input Data:</b> Cleaned order history (<b>Phase 1</b>) & PySpark distributed zone hourly distributions (<b>Phase 2</b>).<br/>
+            • <b>Processing Engine:</b> Ridge Autoregressive Model with 1h/2h/24h lag features + Haversine K-Means clustering (<b>Phase 5</b>).<br/>
+            • <b>Downstream Impact:</b> Proactively pre-positions couriers at 6 strategic Mumbai staging hubs before forecasted order surges hit, eliminating travel latency.
+        </div>
+        """, unsafe_allow_html=True)
+
         c_fc1, c_fc2 = st.columns([1, 1])
 
         with c_fc1:
-            st.markdown("##### 24-Hour Hourly Demand Forecast vs Actuals")
-            # Build time-series line chart
+            target_fc_zone = selected_zone if selected_zone != "All Zones" else "Downtown"
+            st.markdown(f"##### 24-Hour Projected Demand Curve ({target_fc_zone})")
             try:
-                fc_df = models["forecaster"].predict_horizon(zone="Downtown", hours_ahead=24)
+                if target_fc_zone == models["forecaster"].zone:
+                    fc_df = models["forecaster"].predict_horizon(zone=target_fc_zone, hours_ahead=24)
+                else:
+                    ts_zone = HourlyDemandTimeSeriesBuilder.build_zone_hourly_df(df, zone=target_fc_zone)
+                    z_fc = ZoneDemandForecaster(zone=target_fc_zone, alpha=1.0)
+                    z_fc.train_and_evaluate(ts_zone)
+                    fc_df = z_fc.predict_horizon(zone=target_fc_zone, hours_ahead=24)
+
                 fc_df["hour_index"] = [f"T+{i+1}h" for i in range(len(fc_df))]
                 fig_fc = px.line(
                     fc_df,
                     x="hour_index",
                     y="predicted_demand",
                     markers=True,
-                    title="24-Hour Projected Demand Curve (Downtown)",
+                    title=f"Autoregressive Hourly Demand Forecast — {target_fc_zone}",
                     labels={"predicted_demand": "Predicted Orders/Hour", "hour_index": "Forecast Horizon"}
                 )
                 fig_fc.update_traces(line_color="#38bdf8", line_width=3)
                 fig_fc.update_layout(height=340, margin=dict(l=20, r=20, t=40, b=20))
                 st.plotly_chart(fig_fc, use_container_width=True)
-            except Exception:
-                st.warning("Forecasting model initializing...")
+            except Exception as e:
+                st.warning(f"Forecasting model initializing: {e}")
 
         with c_fc2:
-            st.markdown("##### Spark-Aggregated Zone Demand Distribution")
+            st.markdown("##### Spark-Aggregated Zone Demand Share")
             zone_vols = filtered_df["delivery_zone"].value_counts().reset_index()
             zone_vols.columns = ["Zone", "Orders"]
             fig_zb = px.bar(
@@ -276,14 +339,15 @@ def main():
                 x="Zone",
                 y="Orders",
                 color="Zone",
-                title="Historical Order Share by Zone"
+                title="Historical Order Volume Distribution (Spark Batch Aggregation)"
             )
             fig_zb.update_layout(showlegend=False, height=340, margin=dict(l=20, r=20, t=40, b=20))
             st.plotly_chart(fig_zb, use_container_width=True)
 
         # Spatial Staging Map
         st.markdown("---")
-        st.markdown("##### 🗺️ Courier Staging Hubs & Delivery Density (Haversine K-Means)")
+        st.markdown("##### 🗺️ Strategic Courier Staging Hubs (Haversine Distance K-Means Clustering)")
+        st.caption("Couriers are staged at these 6 algorithmic centroids based on high-density delivery clusters across Mumbai.")
         if "clustered_df" in models["clustering"]:
             c_clust = models["clustering"]["clustered_df"]
             fig_map = px.scatter(
@@ -301,6 +365,16 @@ def main():
     # TAB 2: DELAY PREDICTION & PROACTIVE ALERTING
     # -------------------------------------------------------------------------
     with op_tab2:
+        st.markdown("""
+        <div class="pipeline-card">
+            <span class="flow-badge">HOW IT WORKS & CONNECTS</span>
+            <b>Data Pipeline Linkage:</b><br/>
+            • <b>Input Data:</b> MapReduce historical baseline delivery duration (32.4m, <b>Phase 3</b>) & DGIM sliding-window stream (<b>Phase 4</b>).<br/>
+            • <b>Processing Engine:</b> DGIM monitors delayed orders in O(log² N) memory while Random Forest (100 trees, class-balanced, <b>Phase 5</b>) predicts single-order delay risk.<br/>
+            • <b>Downstream Impact:</b> Triggers proactive SLA breach alerts and rider dispatch reallocations before late deliveries damage customer ratings.
+        </div>
+        """, unsafe_allow_html=True)
+
         col_al1, col_al2 = st.columns([1, 1])
 
         with col_al1:
@@ -308,20 +382,27 @@ def main():
             threshold_pct = st.slider("Critical Delay Risk Alert Threshold (%)", min_value=50, max_value=90, value=75, step=5)
             threshold = threshold_pct / 100.0
 
-            zone_risk_data = pd.DataFrame([
-                {"Zone": "East Tech Park", "Delay Probability": 0.82, "Active Orders": 42, "Status": "CRITICAL"},
-                {"Zone": "Downtown", "Delay Probability": 0.78, "Active Orders": 58, "Status": "CRITICAL"},
-                {"Zone": "West University Campus", "Delay Probability": 0.52, "Active Orders": 31, "Status": "MODERATE"},
-                {"Zone": "North Suburbs", "Delay Probability": 0.44, "Active Orders": 26, "Status": "NORMAL"},
-                {"Zone": "South Suburbs", "Delay Probability": 0.38, "Active Orders": 22, "Status": "NORMAL"},
-                {"Zone": "Central Waterfront", "Delay Probability": 0.29, "Active Orders": 18, "Status": "NORMAL"}
-            ])
+            # Compute zone risk dynamically from dataset
+            z_grp = filtered_df.groupby("delivery_zone").agg(
+                total_orders=("order_id", "count"),
+                delay_rate=("is_delayed", "mean"),
+                avg_duration=("delivery_duration_min", "mean")
+            ).reset_index()
+
+            z_grp["Delay Probability"] = z_grp["delay_rate"].round(3)
+            z_grp["Active Orders"] = z_grp["total_orders"]
+            z_grp["Avg Duration (m)"] = z_grp["avg_duration"].round(1)
+            z_grp["Status"] = np.where(z_grp["Delay Probability"] >= threshold, "CRITICAL SLA RISK",
+                              np.where(z_grp["Delay Probability"] >= 0.50, "ELEVATED", "NORMAL"))
+            z_grp.rename(columns={"delivery_zone": "Zone"}, inplace=True)
+
+            zone_risk_data = z_grp[["Zone", "Active Orders", "Avg Duration (m)", "Delay Probability", "Status"]].sort_values(by="Delay Probability", ascending=False)
 
             breaches = zone_risk_data[zone_risk_data["Delay Probability"] >= threshold]
             if not breaches.empty:
-                st.error(f"⚠️ **ACTIVE SLA BREACH ALERT ({len(breaches)} Zones >= {threshold_pct}%):** {', '.join(breaches['Zone'].tolist())} exceed delay tolerance!")
+                st.error(f"⚠️ **ACTIVE SLA BREACH ALERT ({len(breaches)} Zones >= {threshold_pct}%):** {', '.join(breaches['Zone'].tolist())} exceed target SLA delay tolerance!")
             else:
-                st.success("✅ All zones operating within target SLA bounds.")
+                st.success("✅ All delivery zones operating within target SLA tolerance bounds.")
 
             st.dataframe(zone_risk_data, use_container_width=True, height=240)
 
@@ -354,7 +435,7 @@ def main():
                 color = "#ef4444" if tier == "High" else "#f59e0b" if tier == "Medium" else "#10b981"
                 st.markdown(
                     f'<div class="metric-card" style="border-left: 5px solid {color};">'
-                    f'<div class="metric-title">Predicted Delay Probability</div>'
+                    f'<div class="metric-title">Predicted Delay Probability (Random Forest)</div>'
                     f'<div class="metric-value" style="color: {color};">{prob*100:.1f}% ({tier} Risk)</div>'
                     f'</div>',
                     unsafe_allow_html=True
@@ -372,6 +453,16 @@ def main():
     # TAB 3: SMART RECOMMENDATIONS & LIVE DISPATCH
     # -------------------------------------------------------------------------
     with op_tab3:
+        st.markdown("""
+        <div class="pipeline-card">
+            <span class="flow-badge">HOW IT WORKS & CONNECTS</span>
+            <b>Data Pipeline Linkage:</b><br/>
+            • <b>Input Data:</b> Cleaned multi-item order baskets (<b>Phase 1</b>) & customer-restaurant interaction bipartite graph (<b>Phase 5</b>).<br/>
+            • <b>Processing Engine:</b> PCY 2-pass frequent itemset miner with hash-bucket bitmap filter (<b>Phase 5</b>) + Dual Recommenders (Content-Based cosine & Collaborative Filtering, <b>Phase 6</b>).<br/>
+            • <b>Downstream Impact:</b> Upsells high-margin meal combinations in checkout and writes active order dispatch telemetry into live MongoDB/SQLite document store (<b>Phase 6</b>).
+        </div>
+        """, unsafe_allow_html=True)
+
         col_rec1, col_rec2 = st.columns([1, 1])
 
         with col_rec1:
@@ -401,14 +492,14 @@ def main():
                 if cb_out:
                     st.dataframe(pd.DataFrame(cb_out)[["restaurant_id", "similarity_score"]], use_container_width=True)
             with c_r2:
-                st.caption("Collaborative (Peer Affinity)")
+                st.caption("Collaborative (Peer Order Graph)")
                 cf_out = models["cf_rec"].recommend(target_cust, top_k=3)
                 if cf_out:
                     st.dataframe(pd.DataFrame(cf_out)[["restaurant_id", "predicted_score"]], use_container_width=True)
 
         # Live NoSQL Persistence View
         st.markdown("---")
-        st.markdown("##### 🍃 Live MongoDB / Persistent Store Collection Feed")
+        st.markdown("##### 🍃 Live MongoDB / Persistent Store Collection Feed (Phase 6)")
         active_orders = db_mgr.get_active_orders(limit=8)
         if active_orders:
             st.dataframe(pd.DataFrame(active_orders), use_container_width=True)
